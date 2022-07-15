@@ -1,0 +1,79 @@
+﻿@model IEnumerable<EGram.Models.Complaint>
+
+@{
+    ViewBag.Title = "GetAllDisputes";
+}
+
+<h2>GetAllDisputes</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Raised_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaisedByUniqueID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgainstParty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reviewbycomitee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meeting)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Raised_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaisedByUniqueID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgainstParty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reviewbycomitee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Meeting)
+        </td>
+        <td>
+            @Html.ActionLink("Village", "Edit", new { id=item.Complaint_Number }) |
+            @Html.ActionLink("Village", "Details", new { id=item.Complaint_Number }) |
+            @Html.ActionLink("Village", "Delete", new { id=item.Complaint_Number })
+        </td>
+    </tr>
+}
+
+</table>

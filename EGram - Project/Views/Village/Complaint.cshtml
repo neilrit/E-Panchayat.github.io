@@ -1,0 +1,304 @@
+﻿@model EGram.Models.Complaint
+@{
+
+}
+@{
+    ViewBag.Title = "ScehamSetting";
+
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+
+    <div class="container">
+        <h4><b>To add complaint, first check valid user to raise complaint.</b></h4>
+        <div class="row">
+
+            <div class="col-md-offset-3 col-md-6" style="padding-top:2em;background-color:azure;border:2px solid black">
+                <form method="get" class="form-inline" action="#">
+                    <b>Select field.</b>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="1">Mobile Number</option>
+                        <option value="2">Customer No</option>
+                    </select>
+
+                    <div class="form-group mx-sm-2">
+                        <label for="input" class="sr-only">Identity</label>
+                        <input type="text" class="form-control" id="input" placeholder="Identity" required>
+                    </div>
+                    <button onclick="searchcustbyid()" class="btn btn-primary mb-2">Send New OTP</button>
+
+                    <div style="display:none" id="mobile_cnfmmsg" class="alert alert-success" role="alert">
+                        User is present in system.and OTP send to your Email/mobile number.
+                    </div>
+                </form>
+                <form style="padding:2em">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="input" class="sr-only">Enter OTP</label>
+                        <input type="number" class="form-control" id="otpctrl" placeholder="OTP">
+                    </div>
+                    <button type="button" onclick="checkotp()">open complaint details.</button>
+                    <div style="display:none" id="otpmatched" class="alert alert-success" role="alert">
+                        OTP is matched. Now fill Complaint Form.
+                    </div>
+                    <div style="display:none" id="otpnotmatched" class="alert alert-danger" role="alert">
+                        OTP is not matched.
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6" style="padding-top:2em;background-color:azure;border:2px solid black">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <b>Customer Details</b>
+                        <div class="panel-body">
+                            Name:<span id="custName"></span><br>
+                            Mobile:<span id="mobileNumber"></span><br>
+                            Email:<span id="email"></span>
+                        </div>
+                        <div class="panel-footer">
+                            <a onclick="opencustomer()">View More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <button>Existing Complaint.</button>
+                    <button onclick="createnewComplaint()" >Create a new Complaint.</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="custdetails">
+
+        </div>
+        
+    </div>
+
+
+    <!--Complaint Form-->
+    <!-- Modal -->
+    <div class="w3-container">
+        <h2>W3.CSS Modal</h2>
+        <p>Add the w3-card-* class to the w3-modal-content container to display the modal as a card.</p>
+        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button>
+
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-3">
+                <header class="w3-container w3-teal">
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                          class="w3-button w3-display-topright">&times;</span>
+                    <h2>Modal Header</h2>
+                </header>
+                <div class="w3-container">
+                    @using (Html.BeginForm(Html.BeginForm("CreateDispute", "Village", FormMethod.Post, new
+                    {
+                        enctype = "multipart/form-data"
+                    })))
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCustomer">Customer</label>
+                                <input type="text" class="form-control" id="inputCustomer" placeholder="Customer" value="amar sapkal" name="Raised_By" readonly>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            
+                            @*@Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox("file", "", new { type = "file" }) <br />
+                            </div>*@
+
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress2">Issue Related</label>
+                                <input type="text" class="form-control" id="inputAddress2" placeholder="" name="Subject">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="conflict">Conflict</label>
+                                <textarea rows="4" class="form-control" id="conflict" name="Description"></textarea>
+                            </div>
+                            <div>
+                                <table>
+                                    <tr>
+                                        <th>CustomerID</th>
+                                        <th>CustomerName</th>
+                                    </tr>
+                                    <tr>
+                                        <td>dd</td>
+                                        <td>dd</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dd</td>
+                                        <td>dd</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dd</td>
+                                        <td>dd</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dd</td>
+                                        <td>dd</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dd</td>
+                                        <td>dd</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dd</td>
+                                        <td>dd</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        
+                        <div>
+                            <div class="form-group col-md-6">
+                                <label for="inputOtherparty">Against</label>
+                                <input style="display:inline" type="text" class="form-control" id="inputOtherparty" placeholder="Against">
+                                <button> search</button>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="custguid">customer id</label>
+                                <input type="text" class="form-control" id="custguid" name="RaisedByUniqueID" readonly>
+                            </div>
+                        </div>
+                    <button type="submit" class="btn btn-primary">Create Case</button>
+                    }
+                </div>
+                <footer class="w3-container w3-teal">
+                    <p>Modal Footer</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    var otp = null;
+    var custdetails = null;
+    function searchcustbyid(onlycustomer) {
+        var mobileNumber = '9767548791';
+           $.ajax({
+              url: '@Url.Action("GetCustomerDetails", "Village")',
+
+               data: {
+                   id: mobileNumber,
+                   onlycustomer: onlycustomer
+               },
+                 success: function (data) {
+                     custdetails = JSON.parse(data);
+                     if (custdetails!==null && custdetails.FirstName !== null) {
+                         $("#mobile_cnfmmsg").css("display", "block");
+                         alert(custdetails.OTP);
+                         otp = custdetails.OTP;
+                     }
+                     alert("done")
+                //call is successfully completed and we got result in data
+              },
+              error:function (xhr, ajaxOptions, thrownError){
+                              //some errror, some show err msg to user and log the error
+                              alert(xhr.responseText);
+
+                            }
+              });
+    }
+    function checkotp() {
+        alert("otp check");
+        var otpvval = $("#otpctrl").val();
+
+         $.ajax({
+              url: '@Url.Action("ValidateOTP", "Village")',
+
+             data: {
+                 otp: otpvval,
+                 mobileNumber: "9767548791"
+               },
+                 success: function (data) {
+
+                     if (data == "true") {
+                         if (custdetails == null) {
+                             searchcustbyid("true");
+                         }
+                         alert("otp matched");
+                         $("#otpnotmatched").css("display", "none");
+                         $("#otpmatched").css("display", "block");
+                         $("#custName").html("<b>Mr"+ + " " + custdetails.FirstName + " " + custdetails.LastName+"</b>");
+                         $("#mobileNumber").html("<b>" + custdetails.MobilePhone + "</b>");
+                         $("#email").html("<b>" + custdetails.Email + "</b>");
+                     }
+                     else {
+                         $("#otpnotmatched").css("display", "block");
+                         $("#otpmatched").css("display", "none");
+                     }
+
+                //call is successfully completed and we got result in data
+              },
+              error:function (xhr, ajaxOptions, thrownError){
+                              //some errror, some show err msg to user and log the error
+                              alert(xhr.responseText);
+
+                            }
+              });
+        if (otpvval === otp) {
+
+        }
+        else {
+
+        }
+    }
+    function opencustomer() {
+        debugger;
+          $.ajax({
+              url: '@Url.Action("ViewCustomerDetails", "Service")',
+
+             data: {
+                 id: custdetails.GUID
+               },
+                 success: function (data) {
+                     $('#custdetails').html(data);
+                //call is successfully completed and we got result in data
+              },
+              error:function (xhr, ajaxOptions, thrownError){
+                              //some errror, some show err msg to user and log the error
+                              alert(xhr.responseText);
+
+                            }
+              });
+    }
+
+    function createnewComplaint() {
+        if (custdetails!==null && custdetails.FirstName !== null) {
+            alert("opening modal");
+            document.getElementById('id01').style.display = 'block';
+            $('#inputCustomer').val(custdetails.FirstName + " " + custdetails.LastName);
+            $('#custguid').val(custdetails.MobilePhone + ":" + custdetails.GUID);
+            
+        }
+        else {
+           
+            document.getElementById('id01').style.display = 'block';
+          
+            alert("Please load customer first");
+        }
+    }
+
+  
+</script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

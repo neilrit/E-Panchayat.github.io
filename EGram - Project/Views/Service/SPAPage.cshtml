@@ -1,0 +1,166 @@
+﻿<html>  
+<head>  
+ <title>My SPA Page</title>  
+
+ <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.17/js/adal.min.js"></script>  
+ <script type="text/javascript"> 
+ 
+     var organizationURI = "https://org5ecedb1b.crm.dynamics.com";
+     var user, authContext, message, errorMessage;
+
+     window.config = {
+         tenant: "Value121.onmicrosoft.com",
+         clientId: "84761ae2-5c7b-4455-8454-a8697b415906",
+         endpoints: { orgUri: organizationURI },
+         postLogoutRedirectUri: "http://localhost:58587/service/spapage",
+         //The URL of this page in your development environment when debugging.
+         cacheLocation: 'localStorage'
+     };  
+
+
+
+   document.onreadystatechange = function () {  
+           if (document.readyState == "complete") {
+               debugger;
+           //Get the OAuth context  
+           authContext = new AuthenticationContext(config);
+           alert("auth context" + authContext);
+           // In ADAL JS, you will have to explicitly call the handleWindowCallback method on page load to handle the response from the server in case of redirect flows 
+           // like login without popup and acquireTokenRedirect.There is no need to call this function for popup flows like loginPopup and acquireTokenPopup.
+           // This method must be called for processing the response received from AAD.
+           // It extracts the hash, processes the token or error, saves it in the cache and calls the registered callback function in your initialization with the result.
+
+           var isCallback = authContext.isCallback(window.location.hash);
+           alert(isCallback);
+           if (isCallback) {
+               authContext.handleWindowCallback();
+           }
+
+           var loginError = authContext.getLoginError();  
+
+           if (isCallback && !loginError) {
+
+               // login method authContext saves the current location into authContext.CONSTANTS.STORAGE.LOGIN_REQUEST      
+               window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
+           }
+      
+           // ADAL JS uses the OAuth 2.0 implicit flow. As a result, the sign-in flow in ADAL JS authenticates the user with Azure AD and also gets an ID token for your application.
+           // The ID token contains claims about the user which are exposed in the user.profile property in ADAL JS.You can get user information as follows
+
+           user = authContext.getCachedUser();  
+
+
+           if (user) {
+
+               // get user profile details 
+               var userProfileDetail = document.createElement("p");
+               userProfileDetail.textContent = "Hello " + user.profile.name;
+               messageDiv.appendChild(userProfileDetail);
+
+               // show hide the  buttons
+               document.getElementById("btnLogin").style.display = "none";
+               document.getElementById("btnLogout").style.display = "block";
+               document.getElementById("btnUserId").style.display = "block";
+           
+          
+
+           }
+           else {
+
+               var userProfileDetail = document.createElement("p");
+               userProfileDetail.textContent = "No user profile details available !";
+               messageDiv.appendChild(userProfileDetail);
+
+
+               // show hide buttons
+               document.getElementById("btnLogin").style.display = "block";
+               document.getElementById("btnLogout").style.display = "none";
+               document.getElementById("btnUserId").style.display = "none";
+            }
+      
+
+   }  
+  }  
+
+
+  //login method
+     function login() {
+         authContext.login();
+     }
+
+
+// logout method
+// When the logout method is called, the library clears the application cache in the browser storage 
+// and sends a logout request to the Azure AD instance's logout endpoint.
+// The default behavior is to redirect the user to window.location.href after logout. 
+// If a postLogoutRedirectUri value is set at the config time, the user will be redirected to that URI.
+ 
+     function logout() {
+         authContext.logOut();
+     }
+
+
+
+     function getUserId() {  
+
+ // When an authenticated user session exists with Azure AD, 
+//  this method allows the application to obtain tokens silently without prompting the user again. 
+//  ADAL JS uses a hidden Iframe to make the token request to Azure AD.
+
+//  authContext.acquireToken(resource, callback)
+
+//  resource = URL of the resource API
+//  callback = method to handle the token response. It will have either error or token information
+
+         authContext.acquireToken(organizationURI, getUserDetails);  
+
+  }  
+
+
+     function getUserDetails(error, token) {
+
+         if (error) {
+             alert("Error : " + error)
+             return;
+         }
+
+         var req = new XMLHttpRequest()
+         req.open("GET", encodeURI(organizationURI + "/api/data/v9.1/WhoAmI()"), true);
+         req.setRequestHeader("Authorization", "Bearer " + token);
+         req.setRequestHeader("Accept", "application/json");
+         req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+         req.setRequestHeader("OData-MaxVersion", "4.0");
+         req.setRequestHeader("OData-Version", "4.0");
+         req.onreadystatechange = function () {
+             if (this.readyState == 4 /* complete */) {
+                 req.onreadystatechange = null;
+                 if (this.status == 200) {
+
+
+                     var userIdDetail = document.createElement("p");
+                     userIdDetail.textContent = "User Guid: " + JSON.parse(this.response).UserId;
+                     userIdDiv.appendChild(userIdDetail);
+
+
+                 }
+                 else {
+                     var error = JSON.parse(this.response).error;
+                     messageDiv.textContent = error.message;
+                 }
+             }
+         };
+         req.send();
+     }
+  
+ </script>  
+</head>  
+
+<body>
+    <button id="btnLogin" onclick="login();">Login</button>
+    <button id="btnLogout" onclick="logout();">Logout</button>
+    <button id="btnUserId" onclick="getUserId();">Get User GUID</button>
+    <div id="messageDiv"></div>
+    <div id="userIdDiv"></div>
+
+</body>  
+</html>  

@@ -1,0 +1,173 @@
+﻿
+
+<p>
+    @Html.ActionLink("Create New", "CreateResidents")
+</p>
+<table id="resident-data-table" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                FirstName
+            </th>
+            <th>
+                MiddleName
+            </th>
+
+            <th>
+                MobilePhone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                IdentityProof
+            </th>
+            <th>
+                IdentityNo
+            </th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+    </thead>
+    @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobilePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentityProof)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentityNo)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }*@
+
+</table>
+
+<link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- #region datatables files -->
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        function myfunction(ewfd) {
+            alert("click event" + ewfd);
+
+        }
+        $(document).ready(function () {
+            $('#resident-data-table').DataTable({
+                "ajax": {
+                    "url": "/Service/GetListCust",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        "data": "id"
+                    },
+                    {
+                        "data": "FirstName",
+                        "render": function (data, type, row, meta) {
+                            if (type === 'display') {
+                                data = '<a href="updateCustomer?id=' + row.guid + '">' + data + ' ' + row.LastName + '</a>';
+                            }
+                            return data;
+                        }
+                    },
+                    { "data": "MiddleName" },
+                    
+                    { "data": "MobilePhone" },
+                    { "data": "Email" },
+                    { "data": "IdentityProof" },
+                    { "data": "IdentityNo" },
+                    //{
+                    //    //adds td row for button
+                    //    data: "Title",
+                    //    render: function (data, type, row) {
+                    //        var d = '<input id="btnEdit" type="button" onclick="myfunction(' + data + ')" value="Edit" />';
+                    //      //  alert(d);
+                    //        return d;
+
+                    //    }
+                    //},
+                     {
+                         "render": function (data, type, full, meta) {
+                             return '<a class="btn btn-info" href="/Demo/Edit/' + full.FirstName + '">Edit</a>';
+                         }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.guid + "'); >Delete</a>";
+                        }
+                    }
+
+                ]
+            })
+
+
+        });
+
+        function DeleteData(recordid) {
+            alert("id is" + recordid);
+             $.ajax({
+              url: '@Url.Action("DeleteResourcebyid", "Service")',
+              data: { id: recordid },
+              success: function(data){
+                //call is successfully completed and we got result in data
+              },
+              error:function (xhr, ajaxOptions, thrownError){
+                              //some errror, some show err msg to user and log the error  
+                              alert(xhr.responseText);
+
+                            }    
+              });
+        }
+        $("#btnEdit").click(function () {
+            alert("clock");
+            var trElem = $(this).closest("tr");// grabs the button's parent tr element
+            var firstTd = $(trElem).children("td")[0]; //takes the first td which would have your Id
+            alert($(firstTd).text())
+        })
+    </script>
+
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">
+    <div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="test2">' + data.proj_name + '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button></div>
+    <div class="modal-body">...</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button></div></div></div>
+    </div>

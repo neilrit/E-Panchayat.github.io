@@ -1,0 +1,115 @@
+﻿@model IList<EGram.Models.Schema>
+
+@{
+    ViewBag.Title = "ScehamSetting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $('#GotoGovLink').click(function () {
+        // do something…
+        alert("Go To GOV web");
+    })
+      
+</script>
+
+<div class="w3-container">
+
+    <h2 style="margin-top:2em">
+        All Schems
+        <a href="@Url.Action("index","Village")" class="btn btn-success">Add New Schema</a>
+</h2>
+  
+    @foreach(var obj in Model)
+    {
+    <div class="col-md-6">
+        <div class="w3-card-4" style="width: 30em; display: inline; ">
+            <header class="w3-container w3-blue">
+                <h1>
+                    @obj.SchemeID
+                    @obj.SchemaName
+                </h1>
+            </header>
+            <div class="w3-container" >
+                <p>
+
+
+                    @if (obj.Description.Length > 100)
+                    {
+                        @obj.Description.Substring(0, 100)
+                    }
+                    else
+                    {
+                        @obj.Description
+                    }
+                    ...
+                </p>
+                <a href="#" id="MybtnModal" onclick="GetAllScemadata(@obj.SchemeID)">View Details</a>
+            </div>
+        </div>
+   </div>
+    }
+
+
+</div>
+
+
+<!-- .modal -->
+<div class="modal fade" id="Mymodal" onload="callBack()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title schematitle">Notification</h4>
+                <p id="fileName">file</p>
+            </div>
+            <div class="modal-body">
+                <div id='schemabody'>Are you sure you want to continue?</div>
+                <div id="GotoGovLink"><a href="#" id="govlinktext">http://www.google.com</a></div>
+                <div onclick="downloadschematemplate()">
+                    click here<div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <script>
+     function GetAllScemadata(scemeid)
+        {
+
+            $("#Mymodal").modal('show');
+             $.ajax({
+              url: '@Url.Action("RetrieveSchemebyid", "Village")',
+
+              data: { id: scemeid },
+                 success: function (data) {
+                     var schemadetails = JSON.parse(data);
+                     alert(schemadetails.SchemeID);
+
+                     $('.schematitle').html(schemadetails.SchemeID + " " + schemadetails.SchemaName);
+
+                     $('#schemabody').html(schemadetails.Description);
+                     $('#govlinktext').html("<a href='" + schemadetails.URL + "'>Go To Official Link</a>");
+                     $('#fileName').html(schemadetails.ImagePath);
+                //call is successfully completed and we got result in data
+              },
+              error:function (xhr, ajaxOptions, thrownError){
+                              //some errror, some show err msg to user and log the error
+                              alert(xhr.responseText);
+
+                            }
+              });
+        }
+        </script>
+<script>
+    function downloadschematemplate(scemeid) {
+        alert($('#fileName').html());
+        window.open("D:\nilam\EgramPanchayatV2\EGram - Copy\ImagePath\Schema\\"+$('#fileName').html());
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
