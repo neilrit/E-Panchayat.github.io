@@ -30,5 +30,8 @@ namespace EGram.Models
         public string District { get; set; }
         public string State { get; set; }
         public string Salutation { get; set; }
+
+
+        public string OTP { get; set; }
     }
 }

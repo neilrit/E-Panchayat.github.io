@@ -1,0 +1,49 @@
+﻿@model IEnumerable<EGram.Models.Complaint>
+
+@{
+    ViewBag.Title = "GetAllDisputes";
+}
+<!DOCTYPE html>
+<table class="table" style="width:40em" border="1">
+    <tr>
+        <th>
+            Complaint No.
+        </th>
+        <th>
+            Against Party
+        </th>
+        <th>
+            Status
+        </th>
+        @*<th>
+            Review bycomitee
+        </th>*@
+        <th>
+            CreatedOn
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="Editdisputes">
+                    @Html.DisplayFor(modelItem => item.Complaint_Number)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgainstParty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            
+        </tr>
+    }
+
+</table>

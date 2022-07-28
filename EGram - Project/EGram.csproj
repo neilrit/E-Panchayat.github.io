@@ -261,6 +261,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImagesInProj\GreatResident\amarsapkal.jpg" />
+    <Content Include="ImagesInProj\GreatResident\Nilam.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -336,11 +338,13 @@
     <Content Include="Views\Village\UpdateSchema.cshtml" />
     <Content Include="Views\Service\updateCustomer.cshtml" />
     <Content Include="Views\Service\ViewCustomerDetails.cshtml" />
-    <Content Include="Views\Village\EditDisputes.cshtml" />
     <Content Include="Views\Village\GetAllDisputes.cshtml" />
+    <Content Include="Views\Village\GetCases.cshtml" />
+    <Content Include="Views\Village\UpdateDispute1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagesInProj\Complaint\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

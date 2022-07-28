@@ -248,11 +248,11 @@ namespace EGram.Controllers
                 if(CustomerObj!=null && (onlycustomer==null || !onlycustomer.Equals("true")))
                 {
                     string otp = Generate_otp();
-                   //CustomerObj.OTP = otp;
+                    CustomerObj.OTP = otp;
                     string mobileNo = CustomerObj.MobilePhone;
                     string SMSContents = "", smsResult = "", emailResult = "";
                     SMSContents = otp + " is your One-Time Password, valid for 10 minutes only, Please do not share your OTP with anyone.";
-                    smsResult = SendSMS(mobileNo, SMSContents);
+                    //smsResult = SendSMS(mobileNo, SMSContents);
                     emailResult = sendEmail(CustomerObj.Email, SMSContents);
 
                     db.Messages.Add(new Message
@@ -402,7 +402,7 @@ namespace EGram.Controllers
                 {
                     Complaint_Number = nextNum,
                     Raised_By = complaint.Raised_By,
-                    RaisedByUniqueID = complaint.RaisedByUniqueID,
+                    RaisedByUniqueID = complaint.RaisedByUniqueID.Split(':')[0],
                     Description = complaint.Description,
                     Subject = complaint.Subject,
                     Status = "Active",
@@ -429,8 +429,8 @@ namespace EGram.Controllers
                     file.SaveAs(complaint.FileName);
             }
         
-            string result = "call";
-            return View("complaint");
+           string d="call";
+           return View("UpdateDispute",complaint.Complaint_Number);
         }
         // End Get Response function
 
@@ -442,31 +442,132 @@ namespace EGram.Controllers
                 List<Complaint> listComp = new List<Complaint>();
                 using (var db = new Entities())
                 {
-                    var complaintQuery = from b in db.Complaints
-                                         //where b.RaisedByUniqueID == CustomerID
-                                         select b;
-                    foreach (var item in complaintQuery)
+                    if (MobileNumber != null)
                     {
-                        listComp.Add(new Complaint
+                        // List<Complaint> complaintQuery = new List<Complaint>();
+                        var complaintQuery = from b in db.Complaints
+                                             where b.RaisedByUniqueID == MobileNumber
+                                             select b;
+                        foreach (var item in complaintQuery)
                         {
-                            AgainstParty=item.AgainstParty,
-                            Complaint_Number=item.Complaint_Number,
-                            CreatedOn   =item.CreatedOn,
-                            Description=item.Description,
-                            FileName=item.FileName,
-                            ImageFile=item.ImageFile,
-                            Meeting    =item.Meeting,
-                            RaisedByUniqueID=item.RaisedByUniqueID,
-                            Raised_By =     item.Raised_By,
-                            Reviewbycomitee=item.Reviewbycomitee,
-                            Status=item.Status,
-                            Subject =item.Subject
-                        }) ;
+                            listComp.Add(new Complaint
+                            {
+                                AgainstParty = item.AgainstParty,
+                                Complaint_Number = item.Complaint_Number,
+                                CreatedOn = item.CreatedOn,
+                                Reviewbycomitee = item.Reviewbycomitee,
+                                Status = item.Status
+                            });
+                        }
+                        return View("GetCases",listComp);
+                    }
+                    else
+                    {
+                        var complaintQuery = from b in db.Complaints
+                                           //  where b.RaisedByUniqueID == CustomerID
+                                             select b;
+                        foreach (var item in complaintQuery)
+                        {
+                            listComp.Add(new Complaint
+                            {
+                                AgainstParty = item.AgainstParty,
+                                Complaint_Number = item.Complaint_Number,
+                                CreatedOn = item.CreatedOn,
+                                Description = item.Description,
+                                FileName = item.FileName,
+                                ImageFile = item.ImageFile,
+                                Meeting = item.Meeting,
+                                RaisedByUniqueID = item.RaisedByUniqueID,
+                                Raised_By = item.Raised_By,
+                                Reviewbycomitee = item.Reviewbycomitee,
+                                Status = item.Status,
+                                Subject = item.Subject
+                            });
+                        }
                     }
                 }
                 return View(listComp);
             }
             return null;
         }
+
+
+       
+        [HttpGet]
+        public ActionResult UpdateDispute(int? id)
+        {
+            int number = Convert.ToInt32(id);
+            Complaint schemaObj = null;
+            using (var db = new Entities())
+            {
+
+                var schemaquery = from b in db.Complaints
+                                  where b.Complaint_Number == number
+                                  select b;
+
+                foreach (var item in schemaquery)
+                {
+                    schemaObj = new Complaint
+                    {
+                        Description = item.Description,
+                        AgainstParty = item.AgainstParty,
+                        Complaint_Number = item.Complaint_Number,
+                        CreatedOn = item.CreatedOn,
+                        FileName = item.FileName,
+                        ImageFile=item.ImageFile,
+                        Meeting     =item.Meeting,
+                        RaisedByUniqueID    =item.RaisedByUniqueID,
+                        Raised_By    =item.Raised_By,
+                        Reviewbycomitee=    item.Reviewbycomitee,
+                        Status=item.Status,
+                        Subject=item.Subject
+                    };
+                }
+            }
+            return View("UpdateDispute1",schemaObj);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult UpdateDispute(Complaint model, HttpPostedFileBase file)
+        {
+            string FileName = Path.GetFileNameWithoutExtension(file.FileName);
+            //To Get File Extension  
+            string FileExtension = Path.GetExtension(file.FileName);
+
+            //Add Current Date To Attached File Name  
+            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+
+            //Get Upload path from Web.Config file AppSettings.  
+            string UploadPath = @"~/ImagesInProj/Complaint/"+ model.Complaint_Number;
+            //Its Create complete path to store in server.  
+            //temp model.ImageFile = UploadPath + FileName;
+
+            using (var context = new Entities())
+            {
+                var data = context.Complaints.FirstOrDefault(x => x.Complaint_Number == model.Complaint_Number);
+                if (data != null)
+                {
+                    data.AgainstParty = model.AgainstParty;
+                    data.Description = model.Description;
+                    data.Status = model.Status;
+                    data.Subject = model.Subject;
+                   // data.ImagePath = FileName;
+
+                    context.SaveChanges();
+                    ViewBag.Message = "Update is successfully completed";
+
+                    //To copy and save file into server.  
+                    // file.SaveAs(model.ImagePath);
+                    return View("UpdateSchema", model);
+                }
+                else
+                    return View();
+            }
+
+        }
+
     }
 }

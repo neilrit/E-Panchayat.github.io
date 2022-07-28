@@ -79,6 +79,18 @@ namespace EGram.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "FirstName")]
+        public string FirstName;
+
+        [DataType(DataType.Text)]
+        [Display(Name = "LastName")]
+        public string LastName;
+
+        [DataType(DataType.Text)]
+        [Display(Name = "MobileNumber")]
+        public string MobileNumber;
     }
 
     public class ResetPasswordViewModel
