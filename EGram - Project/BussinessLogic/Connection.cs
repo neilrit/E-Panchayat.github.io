@@ -46,9 +46,14 @@ namespace CRM.Gram.Services.Models
             //+ "Password=Pa##w0rd;AppId=84761ae2-5c7b-4455-8454-a8697b415906;"
             //+ "RedirectUri=https://localhost/d365;TokenCacheStorePath=d:\\MyTokenCache;LoginPrompt=Auto";
 
-            return "AuthType=OAuth;Username=testtest@infy188.onmicrosoft.com;Url=https://org3b6d186f.crm.dynamics.com;"
-            + "Password=Pa##w0rd;AppId=0c31d8f6-24b7-4ed6-abbc-d073c2c31ce2;"
+            //return "AuthType=OAuth;Username=testtest@infy188.onmicrosoft.com;Url=https://org3b6d186f.crm.dynamics.com;"
+            //+ "Password=Pa##w0rd;AppId=0c31d8f6-24b7-4ed6-abbc-d073c2c31ce2;"
+            //+ "RedirectUri=https://localhost/d365;LoginPrompt=Never";
+
+            return "AuthType=OAuth;Username=AMARSAP@ISVPractice95.onmicrosoft.com;Url=https://org9023a361.crm.dynamics.com;"
+            + "Password=Pa##w0rd;AppId=fc1f45df-d10b-4f45-b22d-0f393e1bba1f;"
             + "RedirectUri=https://localhost/d365;LoginPrompt=Never";
+            //dW38Q~D~c4LYbBrW1AiM69dHw7-dnUSa64Vitaac
         }
     }
 }
