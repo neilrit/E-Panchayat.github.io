@@ -91,6 +91,9 @@
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="Reviewbycomitee" Type="nvarchar" MaxLength="50" />
           <Property Name="Meeting" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MoreDetailsofAgainstParty" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image Purpose" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Configuration">
           <Key>
@@ -124,6 +127,33 @@
           <Property Name="State" Type="nvarchar" MaxLength="50" />
           <Property Name="Salutation" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Dashboardobj">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="int" Nullable="false" />
+          <Property Name="Isaresident" Type="bit" />
+          <Property Name="Isaplace" Type="bit" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="ImageConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RecordType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SPPath" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecordNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Meeting">
           <Key>
             <PropertyRef Name="ID" />
@@ -155,13 +185,20 @@
           <Property Name="SchemaName" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Condition" Type="nvarchar(max)" />
-          <Property Name="URL" Type="nvarchar" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar" MaxLength="70" />
           <Property Name="Village" Type="int" />
           <Property Name="CreatedOn" Type="date" />
           <Property Name="ActiveTill" Type="date" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="ImagePath" Type="nvarchar" MaxLength="50" />
           <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VillageConfig">
           <Key>
@@ -241,9 +278,12 @@
           <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dashboardobj" EntityType="Self.Dashboardobj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageConfig" EntityType="Self.ImageConfig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meeting" EntityType="Self.Meeting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schema" EntityType="Self.Schema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VillageConfig" EntityType="Self.VillageConfig" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -350,6 +390,9 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Reviewbycomitee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Meeting" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MoreDetailsofAgainstParty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image_Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -389,7 +432,7 @@
           <Property Name="SchemaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Condition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="Village" Type="Int32" />
           <Property Name="CreatedOn" Type="DateTime" Precision="0" />
           <Property Name="ActiveTill" Type="DateTime" Precision="0" />
@@ -466,6 +509,9 @@
           </AssociationSet>
           <EntitySet Name="Messages" EntityType="Model.Message" />
           <EntitySet Name="Configurations" EntityType="Model.Configuration" />
+          <EntitySet Name="Statuses" EntityType="Model.Status" />
+          <EntitySet Name="Dashboardobjs" EntityType="Model.Dashboardobj" />
+          <EntitySet Name="ImageConfigs" EntityType="Model.ImageConfig" />
         </EntityContainer>
         <EntityType Name="Message">
           <Key>
@@ -491,6 +537,40 @@
           <Property Name="VillageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SirpanchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GramSevak_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Dashboardobj">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Int32" Nullable="false" />
+          <Property Name="Isaresident" Type="Boolean" />
+          <Property Name="Isaplace" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ImageConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecordType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SPPath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecordNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -568,6 +648,9 @@
           <EntitySetMapping Name="Complaints">
             <EntityTypeMapping TypeName="Model.Complaint">
               <MappingFragment StoreEntitySet="Complaint">
+                <ScalarProperty Name="Image_Purpose" ColumnName="Image Purpose" />
+                <ScalarProperty Name="MoreDetailsofAgainstParty" ColumnName="MoreDetailsofAgainstParty" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Complaint_Number" ColumnName="Complaint Number" />
                 <ScalarProperty Name="Raised_By" ColumnName="Raised By" />
                 <ScalarProperty Name="RaisedByUniqueID" ColumnName="RaisedByUniqueID" />
@@ -674,6 +757,43 @@
                 <ScalarProperty Name="IsSMSRequired" ColumnName="IsSMSRequired" />
                 <ScalarProperty Name="IsEmailIntegrationRequired" ColumnName="IsEmailIntegrationRequired" />
                 <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="Model.Status">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dashboardobjs">
+            <EntityTypeMapping TypeName="Model.Dashboardobj">
+              <MappingFragment StoreEntitySet="Dashboardobj">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Isaplace" ColumnName="Isaplace" />
+                <ScalarProperty Name="Isaresident" ColumnName="Isaresident" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageConfigs">
+            <EntityTypeMapping TypeName="Model.ImageConfig">
+              <MappingFragment StoreEntitySet="ImageConfig">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="RecordNo" ColumnName="RecordNo" />
+                <ScalarProperty Name="SPPath" ColumnName="SPPath" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

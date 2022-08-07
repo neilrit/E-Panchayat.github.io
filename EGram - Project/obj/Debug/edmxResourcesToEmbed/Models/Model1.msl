@@ -71,6 +71,9 @@
     <EntitySetMapping Name="Complaints">
       <EntityTypeMapping TypeName="Model.Complaint">
         <MappingFragment StoreEntitySet="Complaint">
+          <ScalarProperty Name="Image_Purpose" ColumnName="Image Purpose" />
+          <ScalarProperty Name="MoreDetailsofAgainstParty" ColumnName="MoreDetailsofAgainstParty" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
           <ScalarProperty Name="Complaint_Number" ColumnName="Complaint Number" />
           <ScalarProperty Name="Raised_By" ColumnName="Raised By" />
           <ScalarProperty Name="RaisedByUniqueID" ColumnName="RaisedByUniqueID" />
@@ -177,6 +180,43 @@
           <ScalarProperty Name="IsSMSRequired" ColumnName="IsSMSRequired" />
           <ScalarProperty Name="IsEmailIntegrationRequired" ColumnName="IsEmailIntegrationRequired" />
           <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statuses">
+      <EntityTypeMapping TypeName="Model.Status">
+        <MappingFragment StoreEntitySet="Statuses">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dashboardobjs">
+      <EntityTypeMapping TypeName="Model.Dashboardobj">
+        <MappingFragment StoreEntitySet="Dashboardobj">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Isaplace" ColumnName="Isaplace" />
+          <ScalarProperty Name="Isaresident" ColumnName="Isaresident" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageConfigs">
+      <EntityTypeMapping TypeName="Model.ImageConfig">
+        <MappingFragment StoreEntitySet="ImageConfig">
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="RecordNo" ColumnName="RecordNo" />
+          <ScalarProperty Name="SPPath" ColumnName="SPPath" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

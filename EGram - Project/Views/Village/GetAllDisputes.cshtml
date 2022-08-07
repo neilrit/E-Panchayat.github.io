@@ -42,7 +42,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Raised_By)
+            <a href="UpdateDispute?id=@item.Complaint_Number">
+                @Html.DisplayFor(modelItem => item.Raised_By)
+             </a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RaisedByUniqueID)
@@ -69,9 +71,8 @@
             @Html.DisplayFor(modelItem => item.Meeting)
         </td>
         <td>
-            @Html.ActionLink("Village", "Edit", new { id=item.Complaint_Number }) |
-            @Html.ActionLink("Village", "Details", new { id=item.Complaint_Number }) |
-            @Html.ActionLink("Village", "Delete", new { id=item.Complaint_Number })
+            @Html.ActionLink("Delete", "Village", new { id=item.Complaint_Number }) 
+           
         </td>
     </tr>
 }

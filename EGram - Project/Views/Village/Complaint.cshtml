@@ -18,78 +18,83 @@
 
     <div class="container">
         <h4><b>To add complaint, first check valid user to raise complaint.</b></h4>
-        <div class="row" style="padding-top:2em;background-color:azure;border:2px solid black">
+                @if (Request.IsAuthenticated)
+                {
+                <a href="GetAllDisputes">All Complaint</a>
+                }
+                
+                <div class="row" style="padding-top:2em;background-color:azure;border:2px solid black">
 
-            <div class="col-md-offset-1 col-md-10">
-                <form method="get" class="form-inline" action="#">
-                    <div class="form-group mx-sm-4">
-                        @*<b>Select field.</b>*@
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value="1">Mobile Number</option>
-                            <option value="2">Customer No</option>
-                        </select>
-
-
-                        <label for="input" class="sr-only">Identity</label>
-                        <input type="text" class="form-control" id="input" placeholder="Identity" required>
-                    </div>
-                    <button onclick="searchcustbyid()" class="btn btn-primary mb-2">Send OTP</button>
-
+                    <div class="col-md-offset-1 col-md-10">
+                        <form method="get" class="form-inline" action="#">
+                            <div class="form-group mx-sm-4">
+                                @*<b>Select field.</b>*@
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option value="1">Mobile Number</option>
+                                    <option value="2">Customer No</option>
+                                </select>
 
 
+                                <label for="input" class="sr-only">Identity</label>
+                                <input type="text" class="form-control" id="input" placeholder="Identity" required>
+                            </div>
+                            <button onclick="searchcustbyid()" class="btn btn-primary mb-2">Send OTP</button>
 
 
-                    <label for="input" class="sr-only">Enter OTP</label>
-                    <input type="text" class="form-control" id="otpctrl" placeholder="OTP">
 
-                    <button type="button" onclick="checkotp()">open complaint details.</button>
 
-                    <div style="display:none" id="mobile_cnfmmsg" class="alert alert-success" role="alert">
-                        SuccessMsg
-                    </div>
-                    <!--<div style="display:none" id="otpmatched" class="alert alert-success" role="alert">
-        OTP is matched. Now fill Complaint Form.
-    </div>
-                    <div style="display:none" id="otpnotmatched" class="alert alert-danger" role="alert">
-                        OTP is not matched.
-                    </div>-->
-                    <div style="display:none" id="unsuccess" class="alert alert-danger" role="alert">
-                        fail message
-                    </div>
-                </form>
-            </div>
 
-        </div>
-        <div class="row" id="det" style="display:none">
-            <div class="col-md-6" style="padding-top:2em;background-color:azure;border:2px solid black">
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <b>Customer Details</b>
-                        <div class="panel-body">
-                            Name:<span id="custName"></span><br>
-                            Mobile:<span id="mobileNumber"></span><br>
-                            Email:<span id="email"></span>
+                            <label for="input" class="sr-only">Enter OTP</label>
+                            <input type="text" class="form-control" id="otpctrl" placeholder="OTP">
+
+                            <button type="button" onclick="checkotp()">open complaint details.</button>
+
+                            <div style="display:none" id="mobile_cnfmmsg" class="alert alert-success" role="alert">
+                                SuccessMsg
+                            </div>
+                            <!--<div style="display:none" id="otpmatched" class="alert alert-success" role="alert">
+                            OTP is matched. Now fill Complaint Form.
                         </div>
-                        <div class="panel-footer">
-                            <a onclick="opencustomer()">View More Details</a>
+                                        <div style="display:none" id="otpnotmatched" class="alert alert-danger" role="alert">
+                                            OTP is not matched.
+                                        </div>-->
+                            <div style="display:none" id="unsuccess" class="alert alert-danger" role="alert">
+                                fail message
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="row" id="det" style="display:none">
+                    <div class="col-md-6" style="padding-top:2em;background-color:azure;border:2px solid black">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <b>Customer Details</b>
+                                <div class="panel-body">
+                                    Name:<span id="custName"></span><br>
+                                    Mobile:<span id="mobileNumber"></span><br>
+                                    Email:<span id="email"></span>
+                                </div>
+                                <div class="panel-footer">
+                                    <a onclick="opencustomer()">View More Details</a>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-md-6">
+                            <button onclick="createexistingComplaint()">Existing Complaint.</button>
+                            <button onclick="createnewComplaint()">Create a new Complaint.</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" id="existcust">
+
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <button onclick="createexistingComplaint()">Existing Complaint.</button>
-                    <button onclick="createnewComplaint()" >Create a new Complaint.</button>
+
+                <div id="custdetails">
+
                 </div>
-            </div>
-            <div class="col-lg-6" id="existcust">
 
             </div>
-        </div>
-
-        <div id="custdetails">
-
-        </div>
-        
-    </div>
 
 
     <!--Complaint Form-->

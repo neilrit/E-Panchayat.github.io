@@ -76,9 +76,29 @@ namespace E_GramProject.Models
 
         private static string GetConnectionStringFromAppConfig(string name)
         {
-            return "AuthType=OAuth;Username=NilamSapkal@Value121.onmicrosoft.com;Url=https://org5ecedb1b.crm.dynamics.com;"
-            +"Password=Pa##w0rd;AppId=84761ae2-5c7b-4455-8454-a8697b415906;"
-            +"RedirectUri=https://localhost/d365;TokenCacheStorePath=d:\\MyTokenCache;LoginPrompt=Auto";
+            return "AuthType=OAuth;Username=AMARSAP@ISVPractice95.onmicrosoft.com;Url=https://org9023a361.crm.dynamics.com;"
+                 + "Password=Pa##w0rd;AppId=fc1f45df-d10b-4f45-b22d-0f393e1bba1f;"
+                 + "RedirectUri=https://localhost/d365;LoginPrompt=Never";
+        }
+
+        internal Note RetrieveAttachmentFromCRM(string noteid)
+        {
+            CrmServiceClient service = Connect("Connect");
+            if (service.IsReady)
+            {
+                Note nt=new Note();
+                Entity note = service.Retrieve("annotation", new Guid(noteid), new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+                nt.FileName = note.GetAttributeValue<string>("filename");
+                nt.doc_content = note.GetAttributeValue<string>("documentbody");
+                return nt;
+                //String Location = @"Imag";
+                //String filename = note.GetAttributeValue<String>("filename");
+                //String noteBody = note.GetAttributeValue<String>("documentbody");
+
+                //string outputFileName = @ "" + Location + "\\" + filename;
+                //System.IO.File.WriteAllBytes(outputFileName, fileContent);
+            }
+            return null;
         }
     }
 
@@ -86,5 +106,10 @@ namespace E_GramProject.Models
     {
         public string title;
         public int value;
+    }
+    public class Note
+    {
+        public string FileName { get; set; }
+        public string doc_content { get; set; }
     }
 }

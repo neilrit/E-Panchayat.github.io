@@ -131,6 +131,7 @@ namespace E_GramProject.Views.Home
 
         public ActionResult updateCustomer(string id)
         {
+            CustomerCurd custcurd = new CustomerCurd();
             string number = id;
             Customer customerObj = null;
             using (var db = new Entities())
@@ -151,9 +152,9 @@ namespace E_GramProject.Views.Home
                       Salutation = item.Salutation, 
                       Email  =item.Email,
                       MobilePhone = item.MobilePhone,
-                      State = item.State,
+                //      State = item.State,
                       Address = item.Address,
-                      City = item.City,
+              //        City = item.City,//ConverttoText(item.City, "cr3cc_city"),
                       District   =item.District,
                       IdentityNo   =item.IdentityNo,
                       IdentityProof =item.IdentityProof,
@@ -161,6 +162,15 @@ namespace E_GramProject.Views.Home
                     };
                 }
             }
+               ViewBag.titlearray = new SelectList(GetSalutationData(), "Value", "Text");
+            string[] cityArray = new string[]
+                     {
+                        "cr3cc_name",
+                        "cr3cc_state"
+                     };
+            ViewBag.cityArray = new SelectList(custcurd.retrieveMasterData("cr3cc_city", cityArray, "cr3cc_city"),"Value","Text");
+            ViewBag.stateArray = new SelectList(custcurd.retrieveMasterData("cr3cc_state", null , "cr3cc_state"), "Value", "Text");
+
             return View(customerObj);
         }
         public ActionResult DeleteResourcebyid(dynamic id)

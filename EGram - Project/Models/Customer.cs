@@ -31,7 +31,6 @@ namespace EGram.Models
         public string State { get; set; }
         public string Salutation { get; set; }
 
-
         public string OTP { get; set; }
     }
 }

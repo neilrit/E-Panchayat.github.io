@@ -38,5 +38,8 @@ namespace EGram.Models
         public virtual DbSet<VillageConfig> VillageConfigs { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Configuration> Configurations { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
+        public virtual DbSet<Dashboardobj> Dashboardobjs { get; set; }
+        public virtual DbSet<ImageConfig> ImageConfigs { get; set; }
     }
 }

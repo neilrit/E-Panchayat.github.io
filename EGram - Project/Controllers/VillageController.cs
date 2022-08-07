@@ -1,6 +1,9 @@
-﻿using E_GramProject.Bussiness_Logic;
+﻿using CRM.Gram.Services.Models;
+using E_GramProject.Bussiness_Logic;
 using E_GramProject.Models;
 using EGram.Models;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Tooling.Connector;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -52,7 +55,13 @@ namespace EGram.Controllers
                         SchemaName = item.SchemaName,
                         SchemeID = item.SchemeID,
                         Condition = item.Condition,
-                        URL = item.URL
+                        URL = item.URL,
+                        ActiveTill=item.ActiveTill,
+                        CreatedOn=item.CreatedOn,
+                        FileName=item.FileName,
+                        ImagePath=item.ImagePath,
+                        Status=item.Status,
+                        Village=item.Village
                     };
                 }
 
@@ -102,7 +111,13 @@ namespace EGram.Controllers
                         SchemaName = item.SchemaName,
                         SchemeID = item.SchemeID,
                         Condition = item.Condition,
-                        URL = item.URL
+                        URL = item.URL,
+                        CreatedOn = item.CreatedOn,
+                        ActiveTill = item.ActiveTill,   
+                        Status  =item.Status,
+                        Village = item.Village,
+                        ImagePath = item.ImagePath,
+                        FileName = item.FileName
                     };
                 }
             }
@@ -118,22 +133,26 @@ namespace EGram.Controllers
         [Authorize]
         public ActionResult UpdateSchema(Schema model, HttpPostedFileBase file)
         {
+            string FileName = String.Empty;
+            string UploadPath=String.Empty;
             // It will redirect to 
             // the Read method
             //Use Namespace called :  System.IO  
-            string FileName = Path.GetFileNameWithoutExtension(file.FileName);
+            if (file != null)
+            {
+                FileName = Path.GetFileNameWithoutExtension(file.FileName);
 
-            //To Get File Extension  
-            string FileExtension = Path.GetExtension(file.FileName);
+                //To Get File Extension  
+                string FileExtension = Path.GetExtension(file.FileName);
 
-            //Add Current Date To Attached File Name  
-            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+                //Add Current Date To Attached File Name  
+                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
 
-            //Get Upload path from Web.Config file AppSettings.  
-            string UploadPath = @"D:\nilam\EgramPanchayatV2\EGram - Copy\ImagePath\Schema\";
-            //Its Create complete path to store in server.  
-            model.ImagePath = UploadPath + FileName;
-
+                //Get Upload path from Web.Config file AppSettings.  
+                UploadPath = @"D:\nilam\EgramPanchayatV2\EGram - Copy\ImagePath\Schema\";
+                //Its Create complete path to store in server.  
+                model.ImagePath = UploadPath + FileName;
+            }
             using (var context = new Entities())
             {
                 var data = context.Schemata.FirstOrDefault(x => x.SchemeID == model.SchemeID);
@@ -142,14 +161,22 @@ namespace EGram.Controllers
                     data.SchemaName = model.SchemaName;
                     data.Description = model.Description;
                     data.Condition = model.Condition;
-                    data.Condition = model.Condition;
                     data.ImagePath = FileName;
-
+                    data.Status = model.Status;
+                    data.Village = model.Village;
+                    data.CreatedOn = model.CreatedOn;
+                    data.ActiveTill = model.ActiveTill;
+                    data.FileName = FileName;
+                    data.URL = model.URL;   
+                    
                     context.SaveChanges();
                     ViewBag.Message = "Update is successfully completed";
 
-                    //To copy and save file into server.  
-                    file.SaveAs(model.ImagePath);
+                    //To copy and save file into server.
+                    if (file != null)
+                    {
+                        file.SaveAs(model.ImagePath);
+                    }
                     return View("UpdateSchema", model);
                 }
                 else
@@ -175,7 +202,14 @@ namespace EGram.Controllers
                         SchemaName = item.SchemaName,
                         SchemeID = item.SchemeID,
                         Condition = item.Condition,
-                        URL = item.URL
+                        URL = item.URL,
+                        CreatedOn =   item.CreatedOn,
+                        ActiveTill = item.ActiveTill,
+                        Status = item.Status,
+                        Village = item.Village,
+                        ImagePath = item.ImagePath,
+                        FileName = item.FileName
+                        
                     };
                     schemas.Add(vilobj);
                 }
@@ -410,7 +444,7 @@ namespace EGram.Controllers
                     CreatedOn = DateTime.Now.ToString(),
                     FileName = complaint.FileName
                 });
-
+                
                 if (file != null)
                 {
                     //Get Upload path from Web.Config file AppSettings.  
@@ -429,8 +463,9 @@ namespace EGram.Controllers
                     file.SaveAs(complaint.FileName);
             }
         
-           string d="call";
-           return View("UpdateDispute",complaint.Complaint_Number);
+           //string d="call";
+            complaint.Complaint_Number = nextNum;
+            return View("CreateDispute", complaint);
         }
         // End Get Response function
 
@@ -475,7 +510,7 @@ namespace EGram.Controllers
                                 CreatedOn = item.CreatedOn,
                                 Description = item.Description,
                                 FileName = item.FileName,
-                                ImageFile = item.ImageFile,
+                              //  ImageFile = item.ImageFile,
                                 Meeting = item.Meeting,
                                 RaisedByUniqueID = item.RaisedByUniqueID,
                                 Raised_By = item.Raised_By,
@@ -491,59 +526,99 @@ namespace EGram.Controllers
             return null;
         }
 
-
-       
         [HttpGet]
         public ActionResult UpdateDispute(int? id)
         {
+            if(id == null)
+                return View();
             int number = Convert.ToInt32(id);
-            Complaint schemaObj = null;
+            ComplaintModal schemaObj = null;
             using (var db = new Entities())
             {
+                List<SelectListItem> list = GetAllStatus();
 
+
+                ViewBag.StatusList = list;
                 var schemaquery = from b in db.Complaints
                                   where b.Complaint_Number == number
                                   select b;
 
                 foreach (var item in schemaquery)
                 {
-                    schemaObj = new Complaint
+                    schemaObj = new ComplaintModal
                     {
                         Description = item.Description,
                         AgainstParty = item.AgainstParty,
                         Complaint_Number = item.Complaint_Number,
                         CreatedOn = item.CreatedOn,
                         FileName = item.FileName,
-                        ImageFile=item.ImageFile,
+                       // ImageFile=item.ImageFile,
                         Meeting     =item.Meeting,
                         RaisedByUniqueID    =item.RaisedByUniqueID,
                         Raised_By    =item.Raised_By,
                         Reviewbycomitee=    item.Reviewbycomitee,
-                        Status=item.Status,
-                        Subject=item.Subject
+                        Status=GetSelectedList(list,item.Status),
+                        Subject=item.Subject,
+                        StatusText= item.Status
                     };
                 }
             }
+
+          
             return View("UpdateDispute1",schemaObj);
         }
 
+        private IEnumerable<SelectListItem> GetSelectedList(List<SelectListItem> list, string status)
+        {
+           foreach(var item in list)
+            {
+                if(item.Value==status)
+                {
+                    item.Selected = true;
+                }
+            }
+           return list;
+        }
+
+        private List<SelectListItem> GetAllStatus()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem()
+            {
+                Text = "Active",
+                Value = "1"
+            });
+            list.Add(new SelectListItem()
+            {
+                Text = "Inactive",
+                Value = "2"
+            });
+            return list;
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult UpdateDispute(Complaint model, HttpPostedFileBase file)
+        public ActionResult UpdateDispute(ComplaintModal model, HttpPostedFileBase file)
         {
-            string FileName = Path.GetFileNameWithoutExtension(file.FileName);
-            //To Get File Extension  
-            string FileExtension = Path.GetExtension(file.FileName);
+            string FileName = String.Empty;
+            string UploadPath = String.Empty;
+            model.Status = GetAllStatus();
+            //if (file != null)
+            //{
+            //    FileName = Path.GetFileNameWithoutExtension(file.FileName);
+            //    //To Get File Extension  
+            //    string FileExtension = Path.GetExtension(file.FileName);
 
-            //Add Current Date To Attached File Name  
-            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+            //    //Add Current Date To Attached File Name  
+            //    FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
 
-            //Get Upload path from Web.Config file AppSettings.  
-            string UploadPath = @"~/ImagesInProj/Complaint/"+ model.Complaint_Number;
+            //    //Get Upload path from Web.Config file AppSettings.  
+            //    UploadPath = @"C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\ImagesInProj\Complaint\" + model.Complaint_Number + "\\";
+
+            //}
             //Its Create complete path to store in server.  
             //temp model.ImageFile = UploadPath + FileName;
+            List<SelectListItem> list = GetAllStatus();
 
             using (var context = new Entities())
             {
@@ -552,21 +627,167 @@ namespace EGram.Controllers
                 {
                     data.AgainstParty = model.AgainstParty;
                     data.Description = model.Description;
-                    data.Status = model.Status;
+                    data.Status = GetSelectedOne(list,model.StatusText)  ;
                     data.Subject = model.Subject;
-                   // data.ImagePath = FileName;
-
+                    data.Reviewbycomitee = model.Reviewbycomitee;
+                    data.Raised_By = model.Raised_By;
+                    data.Complaint_Number = model.Complaint_Number;
+                    data.CreatedOn= model.CreatedOn;
+                    data.FileName =  FileName;
+                    data.Image_Purpose = model.Purpose;
                     context.SaveChanges();
                     ViewBag.Message = "Update is successfully completed";
+                    if (file != null)
+                    {
+                        //if (!Directory.Exists(UploadPath))
+                        //{
+                        //    Directory.CreateDirectory(UploadPath);
+                        //}
+                        //file.SaveAs(UploadPath + FileName);
+                       
 
-                    //To copy and save file into server.  
-                    // file.SaveAs(model.ImagePath);
-                    return View("UpdateSchema", model);
+                        MemoryStream target = new MemoryStream();
+                        file.InputStream.CopyTo(target);
+                        byte[] data1 = target.ToArray();
+
+                        CrmServiceClient svc= Connection.CRMService();
+                        string entitytype = "incident";
+                        Entity Note = new Entity("annotation");
+                        Guid EntityToAttachTo = Guid.Parse("0C9F62A8-90DF-E311-9565-A45D36FC5FE8"); // The GUID of the incident
+                        Note["objectid"] = new Microsoft.Xrm.Sdk.EntityReference(entitytype, EntityToAttachTo);
+                        Note["objecttypecode"] = entitytype;
+                        Note["subject"] = "Village-Eksar";
+                        Note["notetext"] = "Complaint/"+model.Raised_By+"("+model.RaisedByUniqueID+")/"+model.Complaint_Number;
+                        Note["filename"] = file.FileName;
+                        Note["mimetype"] = file.ContentType;
+                        Note["documentbody"] = Convert.ToBase64String(data1); //crm like us to store attachments as base64 strings
+
+                        Guid note = svc.Create(Note);
+
+                        context.ImageConfigs.Add(new ImageConfig
+                        {
+                            ID = note.ToString(),
+                            ImageName = file.FileName,
+                            SPPath = "Complaint/" + model.Raised_By + "(" + model.RaisedByUniqueID + ")/" + model.Complaint_Number,
+                            RecordType = "Complaint",
+                            RecordNo = model.Complaint_Number.ToString(),
+                            Purpose=model.Purpose,
+                            Date=DateTime.Now,
+                            Note=note.ToString()
+                            
+                        }); ;
+                              context.SaveChanges();
+
+                    }
+
+
+                    //return RedirectToAction("UpdateDispute/" + model.Complaint_Number);
+                    return View("UpdateDispute1",model);
                 }
                 else
                     return View();
             }
+        }
 
+        public ActionResult GetAttachmentConfig(string imagetype,string number)
+        {
+            IList<ImageConfig> entities = new List<ImageConfig>();
+            try 
+            { 
+              using (var db = new Entities())
+              {
+
+                var attachmentQuery = from b in db.ImageConfigs
+                                  where b.RecordType == imagetype &&
+                                         b.RecordNo == number    
+                                  select b;
+               
+                foreach (var item in attachmentQuery)
+                {
+                        entities.Add(item);
+                }
+                    return Json(new { data = entities }, JsonRequestBehavior.AllowGet);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
+        }
+
+        public string downloadfile(string id)
+        {
+            
+            using (var db = new Entities())
+            {
+                CustomerCRM CRM = new CustomerCRM();
+                Note nt = CRM.RetrieveAttachmentFromCRM(id);
+                return JsonConvert.SerializeObject(nt);
+                //var attachmentQuery = from b1 in db.ImageConfigs
+                //                      where b1.ID == id
+                //                      select b1;
+                //foreach (var item in attachmentQuery)
+                //{
+                //    //return "success"+item.SPPath;
+                //}
+
+            }
+
+            return null;
+        }
+        private string GetSelectedOne(IEnumerable<SelectListItem> status,string s)
+        {
+            foreach (var item in status)
+            {
+                if (item.Text == s)
+                {
+                    return item.Text;
+                }
+            }
+           return string.Empty;
+        }
+
+       
+        public ActionResult CreateDashboardObject()
+        {
+            return View();
+        }
+            [HttpPost]
+        public ActionResult CreateDashboardObject(Dashboardobj dash, HttpPostedFileBase file)
+        {
+            byte[] data;
+            using (Stream inputStream = file.InputStream)
+            {
+                MemoryStream memoryStream = inputStream as MemoryStream;
+                if (memoryStream == null)
+                {
+                    memoryStream = new MemoryStream();
+                    inputStream.CopyTo(memoryStream);
+                }
+                data = memoryStream.ToArray();
+            }
+            using (var db = new Entities())
+            {
+              
+                db.Dashboardobjs.Add(new Dashboardobj() 
+                { 
+                    Name = dash.Name, 
+                    Description = dash.Description, 
+                    Guid = dash.Guid,
+                    ImageName= dash.ImageName,
+                  //  Image=data,
+                    Isaplace=dash.Isaplace,
+                    Isaresident=dash.Isaresident,
+                    FilePath=dash.FilePath
+                });
+                db.SaveChanges();
+            }
+            ViewBag.Message = "Record Created SuccessFully.";
+                return View();
         }
 
     }

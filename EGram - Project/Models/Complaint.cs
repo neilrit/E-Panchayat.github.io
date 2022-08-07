@@ -11,8 +11,7 @@ namespace EGram.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web;
-
+    
     public partial class Complaint
     {
         public int Complaint_Number { get; set; }
@@ -26,6 +25,7 @@ namespace EGram.Models
         public string Reviewbycomitee { get; set; }
         public Nullable<int> Meeting { get; set; }
         public string FileName { get; set; }
-        public HttpPostedFile ImageFile { get; set; }
+        public string MoreDetailsofAgainstParty { get; set; }
+        public string Image_Purpose { get; set; }
     }
 }
