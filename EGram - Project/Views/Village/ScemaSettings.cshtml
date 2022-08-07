@@ -1,8 +1,8 @@
 ﻿@model IList<EGram.Models.Schema>
 
 @{
-    ViewBag.Title = "ScehamSetting";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "View Schema";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
 }
 <script>
     $('#GotoGovLink').click(function () {
@@ -84,7 +84,7 @@
         }
     </style>
 </head>
-<div class="w3-container">
+<div class="w3-container" >
 
     <h2 style="margin-top:2em">
         All Schems
@@ -105,7 +105,7 @@
     </div>
     @foreach (var obj in Model)
     {
-        <div id="@obj.SchemeID" class="tabcontent" style="height:auto">
+        <div id="@obj.SchemeID" class="tabcontent" style="height: auto; font-size: 13px; background-color: white" >
 
             <div class="w3-card-4" style="width: 30em; display: inline; ">
                 <header class="w3-container w3-blue">

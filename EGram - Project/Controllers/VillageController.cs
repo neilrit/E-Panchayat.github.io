@@ -20,31 +20,19 @@ namespace EGram.Controllers
     public class VillageController : Controller
     {
         // GET: Village
-        [Authorize]
+       
         public ActionResult Index(Schema Sceme)
+        {
+            return View();
+        }
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(Schema Sceme, HttpPostedFileBase file)
         {
             using (var db = new Entities())
             {
-
-                //var query = from b in db.VillageConfigs
-                //            orderby b.ID
-                //            select b;
-
-                //Console.WriteLine("All All student in the database:");
-
-                //foreach (var item in query)
-                //{
-                //    Village vilobj=new Village
-                //    {
-                //        ID = item.ID,   
-                //        NameofVillage = item.NameofVillage,
-                //        Description   = item.Description,
-                //        SirpanchName = item.SirpanchName,   
-                //        Latitude = item.Latitude,   
-                //        Longitude = item.Longitude
-                //    };
-                //}
-                var schemaquery = from b in db.Schemata
+              var schemaquery = from b in db.Schemata
                                   select b;
 
                 foreach (var item in schemaquery)
@@ -76,9 +64,17 @@ namespace EGram.Controllers
                             SchemaName = Sceme.SchemaName,
                             Condition = Sceme.Condition,
                             Description = Sceme.Description,
-                            URL = Sceme.URL
-                        });
-                        db.SaveChanges();
+                            URL = Sceme.URL,
+                          //  ImagePath = Sceme.FileName,
+                           Status = Sceme.Status,
+                            Village = Sceme.Village,
+                            CreatedOn = Sceme.CreatedOn,
+                            ActiveTill = Sceme.ActiveTill,
+                            FileName = Sceme.FileName
+
+
+                    });
+                    //    db.SaveChanges();
                         return RedirectToAction("Index");
 
 
@@ -86,15 +82,15 @@ namespace EGram.Controllers
                 }
 
             }
-
-            return View();
+            return RedirectToAction("UpdateSchema",Sceme.SchemeID);
+            
         }
 
         [Authorize]
         [HttpGet]
         public ActionResult UpdateSchema(int? id)
         {
-            int number = Convert.ToInt16(id);
+            int number = Convert.ToInt32(id);
             Schema schemaObj = null;
             using (var db = new Entities())
             {
@@ -138,21 +134,21 @@ namespace EGram.Controllers
             // It will redirect to 
             // the Read method
             //Use Namespace called :  System.IO  
-            if (file != null)
-            {
-                FileName = Path.GetFileNameWithoutExtension(file.FileName);
+            //if (file != null)
+            //{
+            //    FileName = Path.GetFileNameWithoutExtension(file.FileName);
 
-                //To Get File Extension  
-                string FileExtension = Path.GetExtension(file.FileName);
+            //    //To Get File Extension  
+            //    string FileExtension = Path.GetExtension(file.FileName);
 
-                //Add Current Date To Attached File Name  
-                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+            //    //Add Current Date To Attached File Name  
+            //    FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
 
-                //Get Upload path from Web.Config file AppSettings.  
-                UploadPath = @"D:\nilam\EgramPanchayatV2\EGram - Copy\ImagePath\Schema\";
-                //Its Create complete path to store in server.  
-                model.ImagePath = UploadPath + FileName;
-            }
+            //    //Get Upload path from Web.Config file AppSettings.  
+            //    UploadPath = @"D:\nilam\EgramPanchayatV2\EGram - Copy\ImagePath\Schema\";
+            //    //Its Create complete path to store in server.  
+            //    model.ImagePath = UploadPath + FileName;
+            //}
             using (var context = new Entities())
             {
                 var data = context.Schemata.FirstOrDefault(x => x.SchemeID == model.SchemeID);
@@ -175,7 +171,38 @@ namespace EGram.Controllers
                     //To copy and save file into server.
                     if (file != null)
                     {
-                        file.SaveAs(model.ImagePath);
+                        MemoryStream target = new MemoryStream();
+                        file.InputStream.CopyTo(target);
+                        byte[] data1 = target.ToArray();
+
+                        CrmServiceClient svc = Connection.CRMService();
+                        string entitytype = "incident";
+                        Entity Note = new Entity("annotation");
+                        Guid EntityToAttachTo = Guid.Parse("34eb15ed-f565-475d-9456-a568d1387464"); // The GUID of the incident
+                        Note["objectid"] = new Microsoft.Xrm.Sdk.EntityReference(entitytype, EntityToAttachTo);
+                        Note["objecttypecode"] = entitytype;
+                        Note["subject"] = "Village-Eksar";
+                        Note["notetext"] = "Schema/" + model.SchemeID+"_"+model.SchemaName;
+                        Note["filename"] = file.FileName;
+                        Note["mimetype"] = file.ContentType;
+                        Note["documentbody"] = Convert.ToBase64String(data1); //crm like us to store attachments as base64 strings
+
+                        Guid note = svc.Create(Note);
+
+                        context.ImageConfigs.Add(new ImageConfig
+                        {
+                            ID = note.ToString(),
+                            ImageName = file.FileName,
+                            SPPath = "Schema/" + model.SchemeID + "_" + model.SchemaName,
+                            RecordType = "Complaint",
+                            RecordNo = model.SchemeID.ToString(),
+                            Purpose = model.SchemaName,
+                            Date = DateTime.Now,
+                            Note = note.ToString()
+
+                        }); ;
+                        context.SaveChanges();
+                        //   file.SaveAs(model.ImagePath);
                     }
                     return View("UpdateSchema", model);
                 }

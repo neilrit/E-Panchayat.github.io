@@ -11,7 +11,8 @@ namespace EGram.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Complaint
     {
         public int Complaint_Number { get; set; }
@@ -20,6 +21,8 @@ namespace EGram.Models
         public string AgainstParty { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
+
+        [DataType(DataType.Date)]
         public string CreatedOn { get; set; }
         public string Status { get; set; }
         public string Reviewbycomitee { get; set; }

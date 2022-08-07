@@ -11,7 +11,8 @@ namespace EGram.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Schema
     {
         public int SchemeID { get; set; }
@@ -20,7 +21,9 @@ namespace EGram.Models
         public string Condition { get; set; }
         public string URL { get; set; }
         public Nullable<int> Village { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> CreatedOn { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> ActiveTill { get; set; }
         public string Status { get; set; }
         public string ImagePath { get; set; }

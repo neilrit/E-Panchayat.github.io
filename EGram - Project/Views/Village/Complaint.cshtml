@@ -3,8 +3,8 @@
 
 }
 @{
-    ViewBag.Title = "ScehamSetting";
-
+    ViewBag.Title = "Dispute Page";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
 
 }
 <!DOCTYPE html>
@@ -28,15 +28,11 @@
                     <div class="col-md-offset-1 col-md-10">
                         <form method="get" class="form-inline" action="#">
                             <div class="form-group mx-sm-4">
-                                @*<b>Select field.</b>*@
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option value="1">Mobile Number</option>
-                                    <option value="2">Customer No</option>
-                                </select>
+                                
 
 
                                 <label for="input" class="sr-only">Identity</label>
-                                <input type="text" class="form-control" id="input" placeholder="Identity" required>
+                                <input type="text" class="form-control" id="input" placeholder="Mobile Number" required>
                             </div>
                             <button onclick="searchcustbyid()" class="btn btn-primary mb-2">Send OTP</button>
 
