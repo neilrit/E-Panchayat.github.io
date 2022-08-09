@@ -8,246 +8,268 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<div class="container body-content" style="margin-top:4em">
+    @using (Html.BeginForm(Html.BeginForm("UpdateDispute", "Village", FormMethod.Post, new
+    {
+        enctype = "multipart/form-data"
+    })))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm(Html.BeginForm("UpdateDispute", "Village", FormMethod.Post, new
-{
-    enctype = "multipart/form-data"
-})))
-{
-    @Html.AntiForgeryToken()
+        <div class="form-horizontal col-md-8">
+            <h5>Dear <b>@Model.Raised_By</b>,Your Complaint No. <b>@Model.Complaint_Number</b> is Active. </h5>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-horizontal col-md-8">
-        <h4>Dear <b>@Model.Raised_By</b>,Your Complaint No. <b>@Model.Complaint_Number</b> is Active. </h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="form-group" style="display:none">
+            <div class="form-group" style="display:none">
 
 
-            @Html.LabelFor(model => model.Complaint_Number, htmlAttributes: new { @class = "control-label col-md-1" })
-            <div class="col-md-3">
-                @Html.TextAreaFor(model => model.Complaint_Number, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Complaint_Number, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Complaint_Number, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @Html.TextAreaFor(model => model.Complaint_Number, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Complaint_Number, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="max-width:auto">
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Raised_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Raised_By, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Raised_By, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.RaisedByUniqueID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.RaisedByUniqueID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RaisedByUniqueID, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AgainstParty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AgainstParty, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AgainstParty, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                    @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+                </div>
+
+
+
+
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-3" style="display:none">
+                    @Html.EditorFor(model => model.StatusText, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, @row = 5, @cols = 60 })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-5" id="doc" style="display:none">
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Reviewbycomitee, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reviewbycomitee, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reviewbycomitee, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.Meeting, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Meeting, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                    @Html.ValidationMessageFor(model => model.Meeting, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Purpose, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
+
+                </div>
+                @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBox("file", "", new { type = "file" })
+                    @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="View Document" onclick="Openpdf()" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+                <div id="documentViewer">
+
+                </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="col-md-4">
+            <input type="button" id="myBtn" style="margin-top:1em" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" value="Add Note" />
+            <input type="button" id="myBtn" style="margin-top:1em" data-toggle="collapse" data-target="#sendsms" aria-expanded="false" aria-controls="collapseExample" value="Send SMS" />
+            <input type="button" id="myBtn" style="margin-top:1em" data-toggle="collapse" data-target="#sendemail" aria-expanded="false" aria-controls="collapseExample" value="Send Email" />
 
-            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-1" })
-            <div class="col-md-10" style="max-width:auto">
-                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            <div class="collapse" id="collapseExample" style="border:2px solid black">
+                <div class="card card-body">
+                    Discussion Date : @DateTime.Today
+                    <form>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <input type="text" value="From Admin" name="fromadmin" readonly />
+                        }
+                        else
+                        {
+                            <input type="text" value="From Resident" name="fromuser" readonly />
+                        }
+                        <br />
+                        <textarea rows="5" cols="33" name="discussion" placeholder="comments"></textarea>
+                        <input type="date" name="date" />
+                        <input type="button" value="create Note." />
+                    </form>
+                </div>
             </div>
+
+
+            <div class="collapse" id="sendsms" style="border:2px solid black">
+                <div class="card card-body">
+                    Discussion Date : @DateTime.Today
+                    Recepient No: @Model.RaisedByUniqueID
+                    <form>
+                        <textarea rows="4" name="discussion" placeholder="message"></textarea>
+
+                        <input type="button" value="Send SMS." />
+                    </form>
+                </div>
+            </div>
+            <div class="collapse" id="sendemail" style="border:2px solid black">
+                <div class="card card-body">
+                    Discussion Date : @DateTime.Today
+                    <form>
+                        <textarea rows="4" name="discussion" placeholder="comments"></textarea>
+                        <input type="date" name="date" />
+                        <input type="button" value="create Note." />
+                    </form>
+                </div>
+            </div>
+
+            <h3 class="sidebar-title">Recent Activities</h3>
+            <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  
+                    <h5>Nihil blanditiis at in nihil autem</h5>
+                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  
+                    <h5>Quidem autem et impedit</h5>
+                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  
+                    <h5>Id quia et et ut maxime similique occaecati ut</h5>
+                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+               
+            </div><!-- End sidebar recent posts-->
+
 
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Raised_By, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Raised_By, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Raised_By, "", new { @class = "text-danger" })
+
+    <div>
+        @Html.ActionLink("Back to Home", "Index")
+    </div>
+
+    <div id="id03" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal">
+                <span onclick="document.getElementById('id03').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                <h2>Here what attachment is.</h2>
+            </header>
+            <div class="w3-container">
+                <table class="table table-striped table-bordered" id="attachment-data-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Name</th>
+                            <th>Purpose</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
-
-            @Html.LabelFor(model => model.RaisedByUniqueID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.RaisedByUniqueID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RaisedByUniqueID, "", new { @class = "text-danger" })
-            </div>
-
-
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AgainstParty, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.AgainstParty, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AgainstParty, "", new { @class = "text-danger" })
-            </div>
-
-            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
-                @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
-            </div>
-
-
-
-
-
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-3" style="display:none">
-                @Html.EditorFor(model => model.StatusText, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, @row = 5, @cols = 60 })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-md-5" id="doc" style="display:none">
-
-            </div>
-        </div>
-        <div class="form-group">
-
-            @Html.LabelFor(model => model.Reviewbycomitee, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Reviewbycomitee, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Reviewbycomitee, "", new { @class = "text-danger" })
-            </div>
-
-            @Html.LabelFor(model => model.Meeting, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Meeting, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
-                @Html.ValidationMessageFor(model => model.Meeting, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Purpose, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
-
-            </div>
-            @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.TextBox("file", "", new { type = "file" })
-                @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
-
-            </div>
-        </div>
-
-
-        <div class="form-group">
-
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="View Document" onclick="Openpdf()" class="btn btn-default" />
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-            <div id="documentViewer">
-
-            </div>
+            <footer class="w3-container w3-teal">
+                <p>Modal Footer</p>
+            </footer>
         </div>
     </div>
-    <div class="col-md-4">
-        <input type="button" id="myBtn" style="margin-top:1em" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" value="Add Note" />
-        <input type="button" id="myBtn" style="margin-top:1em" data-toggle="collapse" data-target="#sendsms" aria-expanded="false" aria-controls="collapseExample" value="Send SMS" />
-        <input type="button" id="myBtn" style="margin-top:1em" data-toggle="collapse" data-target="#sendemail" aria-expanded="false" aria-controls="collapseExample" value="Send Email" />
 
-        <div class="collapse" id="collapseExample" style="border:2px solid black">
-            <div class="card card-body">
-                Discussion Date : @DateTime.Today
-                <form>
-                    @if (Request.IsAuthenticated)
-                    {
-                        <input type="text" value="From Admin" name="fromadmin" readonly />
-                    }
-                    else
-                    {
-                        <input type="text" value="From Resident" name="fromuser" readonly />
-                    }
-                    <br />
-                    <textarea rows="5" cols="33" name="discussion" placeholder="comments"></textarea>
-                    <input type="date" name="date" />
-                    <input type="button" value="create Note." />
-                </form>
+
+    <div id="id04" class="w3-modal" style="width:50px">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal">
+                <span onclick="document.getElementById('id04').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                <h2>Modal Header</h2>
+            </header>
+            <div class="w3-container">
+                <p>Some text..</p>
+                <p>Some text..</p>
             </div>
+            <footer class="w3-container w3-teal">
+                <p>Modal Footer</p>
+            </footer>
         </div>
-
-
-        <div class="collapse" id="sendsms" style="border:2px solid black">
-            <div class="card card-body">
-                Discussion Date : @DateTime.Today
-                Recepient No: @Model.RaisedByUniqueID
-                <form>
-                    <textarea rows="4" name="discussion" placeholder="message"></textarea>
-
-                    <input type="button" value="Send SMS." />
-                </form>
-            </div>
-        </div>
-        <div class="collapse" id="sendemail" style="border:2px solid black">
-            <div class="card card-body">
-                Discussion Date : @DateTime.Today
-                <form>
-                    <textarea rows="4" name="discussion" placeholder="comments"></textarea>
-                    <input type="date" name="date" />
-                    <input type="button" value="create Note." />
-                </form>
-            </div>
-        </div>
-
-        View Existing Comments
-
     </div>
-}
-
-
-<div>
-    @Html.ActionLink("Back to Home", "Index")
-</div>
-
-<div id="id03" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-        <header class="w3-container w3-teal">
-            <span onclick="document.getElementById('id03').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-            <h2>Here what attachment is.</h2>
-        </header>
-        <div class="w3-container">
-            <table class="table table-striped table-bordered" id="attachment-data-table" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Index</th>
-                        <th>Name</th>
-                        <th>Purpose</th>
-                        <th>Download</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <footer class="w3-container w3-teal">
-            <p>Modal Footer</p>
-        </footer>
     </div>
-</div>
 
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- #region datatables files -->
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
-<div id="id04" class="w3-modal" style="width:50px">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-        <header class="w3-container w3-teal">
-            <span onclick="document.getElementById('id04').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-            <h2>Modal Header</h2>
-        </header>
-        <div class="w3-container">
-            <p>Some text..</p>
-            <p>Some text..</p>
-        </div>
-        <footer class="w3-container w3-teal">
-            <p>Modal Footer</p>
-        </footer>
-    </div>
-</div>
-
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<!-- #region datatables files -->
-<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
-<script>
+    <script>
 
     function Openpdf() {
         document.getElementById('id03').style.display = 'block';
@@ -283,7 +305,7 @@
 
                 {
                     "render": function (data, type, row) {
-                        return '<input type="button" class="btn btn-info" value="Download" onclick="downloadfile(\''+row.ID+'\')"/>';
+                        return '<a href=https://localhost:44355/' + row.attachmentbase +' target="_blank"><input type="button" class="btn btn-info" value="Download"/></a>';
                     }
                 }
 
@@ -310,19 +332,19 @@
           });
 
     }
-</script>
-<style>
+    </script>
+    <style>
 
-    .form-horizontal .control-label {
-        padding-top: 7px;
-        margin-bottom: 0;
-        text-align: left;
-    }
+        .form-horizontal .control-label {
+            padding-top: 7px;
+            margin-bottom: 0;
+            text-align: left;
+        }
 
-    input, select, textarea {
-        max-width: none;
-    }
-</style>
+        input, select, textarea {
+            max-width: none;
+        }
+    </style>
 
 
 

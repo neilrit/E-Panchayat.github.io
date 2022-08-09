@@ -1,6 +1,7 @@
 ﻿using CRM.Gram.Services.Models;
 using E_GramProject.Bussiness_Logic;
 using E_GramProject.Models;
+using EGram.BussinessLogic;
 using EGram.Models;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Tooling.Connector;
@@ -194,7 +195,7 @@ namespace EGram.Controllers
                             ID = note.ToString(),
                             ImageName = file.FileName,
                             SPPath = "Schema/" + model.SchemeID + "_" + model.SchemaName,
-                            RecordType = "Complaint",
+                            RecordType = "Schema",
                             RecordNo = model.SchemeID.ToString(),
                             Purpose = model.SchemaName,
                             Date = DateTime.Now,
@@ -245,9 +246,12 @@ namespace EGram.Controllers
             return View("ScemaSettings", schemas);
         }
         
-        public FileResult downloadschematemplate(string path)
+        public string downloadschematemplate(string noteid)
         {
-            return null;
+            CrmServiceClient svc = Connection.CRMService();
+
+            return "";
+
         }
         public string RetrieveSchemebyid(dynamic id)
         {
@@ -666,25 +670,36 @@ namespace EGram.Controllers
                     ViewBag.Message = "Update is successfully completed";
                     if (file != null)
                     {
-                        //if (!Directory.Exists(UploadPath))
-                        //{
-                        //    Directory.CreateDirectory(UploadPath);
-                        //}
-                        //file.SaveAs(UploadPath + FileName);
                        
 
                         MemoryStream target = new MemoryStream();
                         file.InputStream.CopyTo(target);
                         byte[] data1 = target.ToArray();
 
-                        CrmServiceClient svc= Connection.CRMService();
+                        //string path = "ImagesInProj/Complaints/" + model.Raised_By + "/" + model.Complaint_Number +"/";
+
+                        // string fullpath= @"https://localhost:44355/" + path;
+                        //if (!Directory.Exists(path))
+                        //{
+                        //    Directory.CreateDirectory(path);
+                        //}
+                     //   file.SaveAs(path);
+
+                        //byte[] imageBytes = Convert.FromBase64String(Convert.ToBase64String(data1));
+                        //string filepath = path + Path.GetFileName(file.FileName);
+                        ////Save the Byte Array as Image File.
+                        //string filePath = Server.MapPath(filepath);
+                        //System.IO.File.WriteAllBytes(filePath, imageBytes);
+
+
+                        CrmServiceClient svc = Connection.CRMService();
                         string entitytype = "incident";
                         Entity Note = new Entity("annotation");
                         Guid EntityToAttachTo = Guid.Parse("0C9F62A8-90DF-E311-9565-A45D36FC5FE8"); // The GUID of the incident
                         Note["objectid"] = new Microsoft.Xrm.Sdk.EntityReference(entitytype, EntityToAttachTo);
                         Note["objecttypecode"] = entitytype;
                         Note["subject"] = "Village-Eksar";
-                        Note["notetext"] = "Complaint/"+model.Raised_By+"("+model.RaisedByUniqueID+")/"+model.Complaint_Number;
+                        Note["notetext"] = "Complaint/" + model.Raised_By + "(" + model.RaisedByUniqueID + ")/" + model.Complaint_Number;
                         Note["filename"] = file.FileName;
                         Note["mimetype"] = file.ContentType;
                         Note["documentbody"] = Convert.ToBase64String(data1); //crm like us to store attachments as base64 strings
@@ -693,18 +708,17 @@ namespace EGram.Controllers
 
                         context.ImageConfigs.Add(new ImageConfig
                         {
-                            ID = note.ToString(),
+                            ID = Guid.NewGuid().ToString(),
                             ImageName = file.FileName,
                             SPPath = "Complaint/" + model.Raised_By + "(" + model.RaisedByUniqueID + ")/" + model.Complaint_Number,
                             RecordType = "Complaint",
                             RecordNo = model.Complaint_Number.ToString(),
                             Purpose=model.Purpose,
                             Date=DateTime.Now,
-                            Note=note.ToString()
-                            
-                        }); ;
-                              context.SaveChanges();
+                            Note= note.ToString()
 
+                        });
+                        context.SaveChanges();
                     }
 
 
@@ -718,7 +732,7 @@ namespace EGram.Controllers
 
         public ActionResult GetAttachmentConfig(string imagetype,string number)
         {
-            IList<ImageConfig> entities = new List<ImageConfig>();
+            IList<ImageConfigMiddle> entities = new List<ImageConfigMiddle>();
             try 
             { 
               using (var db = new Entities())
@@ -728,10 +742,32 @@ namespace EGram.Controllers
                                   where b.RecordType == imagetype &&
                                          b.RecordNo == number    
                                   select b;
-               
+                CrmServiceClient svc = Connection.CRMService();
                 foreach (var item in attachmentQuery)
                 {
-                        entities.Add(item);
+                        Entity note=svc.Retrieve("annotation", new Guid(item.Note), new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+                        if (note != null)
+                        {
+                            byte[] imageBytes = Convert.FromBase64String(note.Attributes["documentbody"].ToString());
+                            string filepath = "//ImagesInProj/Complaints/" + Path.GetFileName(note.Attributes["filename"].ToString());
+                            //Save the Byte Array as Image File.
+                            string filePath = Server.MapPath(filepath);
+                            System.IO.File.WriteAllBytes(filePath, imageBytes);
+
+                            entities.Add(new ImageConfigMiddle
+                            {
+                                ID = item.ID,
+                                Name = item.Name,
+                                attachmentbase = filepath,// note.Attributes["filename"].ToString()            ,
+                                Date = item.Date,
+                                ImageName = item.ImageName,
+                                Purpose = item.Purpose,
+                                RecordNo = item.RecordNo,
+                                RecordType = item.RecordType,
+                                SPPath = item.SPPath
+
+                            });
+                        }
                 }
                     return Json(new { data = entities }, JsonRequestBehavior.AllowGet);
 
@@ -741,9 +777,9 @@ namespace EGram.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+             // throw ex;
             }
-           
+            return null;
         }
 
         public string downloadfile(string id)
@@ -779,9 +815,15 @@ namespace EGram.Controllers
         }
 
        
-        public ActionResult CreateDashboardObject()
+        public ActionResult CreateDashboardObject(int id)
         {
-            return View();
+            
+            ViewBag.isplace = (id == 1)?true:false;
+            ViewBag.isresident = (id == 2)?true:false;
+               Dashboardobj dashboardobj = new Dashboardobj();
+            dashboardobj.Isaresident = false;
+            dashboardobj.Isaplace = true;
+            return View(dashboardobj);
         }
             [HttpPost]
         public ActionResult CreateDashboardObject(Dashboardobj dash, HttpPostedFileBase file)

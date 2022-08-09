@@ -49,21 +49,24 @@
     ======================================================== -->
 </head>
 
-<body >
+<body>
 
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center header-transparent " style="background-color: rgba(30, 67, 86, 0.8); height: 60px; ">
+  
+
+    <header id="header" class="fixed-top d-flex align-items-center ">
         <div class="container d-flex justify-content-between align-items-center">
 
             <div class="logo">
-                <h1 class="text-light"><a href="index.html"><span>Moderna</span></a></h1>
+                <h1 class="text-light">   @Html.ActionLink("Modern Town", "index", "Home")</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="active " href="index.html">Home</a></li>
+                    <li>
+                        @Html.ActionLink("Home", "index", "Home")
+                    </li>
                     <li>@Html.ActionLink("Schems", "Schemapage", "Village")</li>
 
                     <li>  @Html.ActionLink("Complaint", "complaint", "village")</li>
@@ -87,11 +90,41 @@
         <li><a href="#">Drop Down 4</a></li>
       </ul>
     </li>-->
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    @if (!Request.IsAuthenticated)
+                    {
+
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+                 
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Manage-Resident", "ViewResident", "Service")</li>
+                <li class="dropdown">
+                    <a href="#">
+                        <span>Admin Tab</span> <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Manage Residents", "ViewResident", "Service")
+
+                        </li>
+
+                        <li><a href="#">Complaints Management</a></li>
+                        <li><a href="#">Schema Configuration</a></li>
+                        <li><a href="#">Profile Page</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Dashboard Management</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li>
+
+                                <a href="/village//CreateDashboardObject/0">Town Details</a></li>
+                                <li><a href="/village//CreateDashboardObject/1">Driving Commitee</a></li>
+                                <li><a href="/village//CreateDashboardObject/2">To visited for</a></li>
+                                <li><a href="/village//CreateDashboardObject/3">News </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
 
                         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
@@ -103,9 +136,11 @@
                                     @Html.AntiForgeryToken()
 
                                     <ul class="nav navbar-nav navbar-left">
-                                        <li><b>
-                                            @Html.ActionLink("Hi " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                        </b></li>
+                                        <li>
+                                            <b>
+                                                @Html.ActionLink("Hi " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                            </b>
+                                        </li>
                                     </ul>
                                 }
                             }
@@ -117,17 +152,15 @@
 
 
                     }
-                    
+
                 </ul>
-             
                 <i class="bi bi-list mobile-nav-toggle"></i>
-                @Html.Partial("_LoginPartial")
             </nav><!-- .navbar -->
 
         </div>
     </header><!-- End Header -->
 
-    <div class="container body-content" >
+    <div> @*class="container body-content">*@
         @RenderBody()
         <hr />
         <footer>

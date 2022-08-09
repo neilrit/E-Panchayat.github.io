@@ -1,411 +1,5 @@
-D:\nilam\EgramPanchayatV2\EGram\bin\EGram.dll.config
-D:\nilam\EgramPanchayatV2\EGram\bin\EGram.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\EGram.pdb
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\csc.exe
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\csc.exe.config
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\csc.rsp
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\csi.exe
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\csi.exe.config
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\csi.rsp
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.Managed.Core.targets
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\Microsoft.Win32.Primitives.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.AppContext.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Collections.Immutable.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Console.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Globalization.Calendars.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.IO.Compression.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.IO.Compression.ZipFile.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.IO.FileSystem.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Net.Http.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Net.Sockets.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Reflection.Metadata.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Threading.Tasks.Extensions.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.ValueTuple.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Xml.XmlDocument.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Xml.XPath.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\vbc.exe
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\vbc.exe.config
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\vbc.rsp
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\VBCSCompiler.exe
-D:\nilam\EgramPanchayatV2\EGram\bin\roslyn\VBCSCompiler.exe.config
-D:\nilam\EgramPanchayatV2\EGram\bin\Antlr3.Runtime.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\EntityFramework.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\EntityFramework.SqlServer.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.AspNet.Identity.Core.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Cookies.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Facebook.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Google.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.OAuth.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Twitter.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Web.Infrastructure.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Newtonsoft.Json.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Owin.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Helpers.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Mvc.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Optimization.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Razor.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.WebPages.Deployment.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.WebPages.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.WebPages.Razor.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\WebGrease.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Helpers.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Mvc.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Optimization.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.Razor.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.WebPages.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.WebPages.Deployment.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Web.WebPages.Razor.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Newtonsoft.Json.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Antlr3.Runtime.pdb
-D:\nilam\EgramPanchayatV2\EGram\bin\EntityFramework.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\EntityFramework.SqlServer.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.AspNet.Identity.Core.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Facebook.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Cookies.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Google.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.Twitter.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Owin.Security.OAuth.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\nilam\EgramPanchayatV2\EGram\obj\Debug\EGram.csproj.AssemblyReference.cache
-D:\nilam\EgramPanchayatV2\EGram\obj\Debug\EGram.csproj.CoreCompileInputs.cache
-D:\nilam\EgramPanchayatV2\EGram\obj\Debug\EGram.csproj.CopyComplete
-D:\nilam\EgramPanchayatV2\EGram\obj\Debug\EGram.dll
-D:\nilam\EgramPanchayatV2\EGram\obj\Debug\EGram.pdb
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Xrm.Sdk.Deployment.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Xrm.Sdk.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Xrm.Tooling.Connector.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Text.Json.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Crm.Sdk.Proxy.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Rest.ClientRuntime.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Memory.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.ValueTuple.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Text.Encodings.Web.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Numerics.Vectors.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Threading.Tasks.Extensions.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Bcl.AsyncInterfaces.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Buffers.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Runtime.CompilerServices.Unsafe.dll
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Xrm.Sdk.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Xrm.Sdk.Deployment.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Xrm.Tooling.Connector.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Text.Json.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Crm.Sdk.Proxy.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Memory.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.ValueTuple.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Text.Encodings.Web.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Numerics.Vectors.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Threading.Tasks.Extensions.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\Microsoft.Bcl.AsyncInterfaces.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Buffers.xml
-D:\nilam\EgramPanchayatV2\EGram\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EGram.dll.config
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EGram.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EGram.pdb
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\csc.exe
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\csc.exe.config
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\csc.rsp
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\csi.exe
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\csi.exe.config
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\csi.rsp
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.Managed.Core.targets
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\Microsoft.Win32.Primitives.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.AppContext.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Collections.Immutable.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Console.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Globalization.Calendars.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.IO.Compression.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.IO.Compression.ZipFile.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.IO.FileSystem.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Net.Http.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Net.Sockets.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Reflection.Metadata.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Threading.Tasks.Extensions.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.ValueTuple.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Xml.XmlDocument.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Xml.XPath.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\vbc.exe
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\vbc.exe.config
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\vbc.rsp
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\VBCSCompiler.exe
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\roslyn\VBCSCompiler.exe.config
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Antlr3.Runtime.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EntityFramework.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EntityFramework.SqlServer.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.AspNet.Identity.Core.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Cookies.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Facebook.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Google.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.OAuth.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Twitter.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Web.Infrastructure.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Xrm.Sdk.Deployment.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Xrm.Sdk.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Xrm.Tooling.Connector.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Newtonsoft.Json.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Owin.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Helpers.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Mvc.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Optimization.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Razor.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.WebPages.Deployment.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.WebPages.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.WebPages.Razor.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\WebGrease.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Text.Json.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Crm.Sdk.Proxy.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Rest.ClientRuntime.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Memory.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.ValueTuple.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Text.Encodings.Web.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Numerics.Vectors.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Threading.Tasks.Extensions.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Bcl.AsyncInterfaces.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Buffers.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Runtime.CompilerServices.Unsafe.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Xrm.Sdk.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Xrm.Sdk.Deployment.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Xrm.Tooling.Connector.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Helpers.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Mvc.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Optimization.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.Razor.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.WebPages.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.WebPages.Deployment.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Web.WebPages.Razor.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Newtonsoft.Json.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Antlr3.Runtime.pdb
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EntityFramework.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\EntityFramework.SqlServer.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.AspNet.Identity.Core.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Facebook.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Cookies.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Google.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.Twitter.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Owin.Security.OAuth.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Text.Json.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Crm.Sdk.Proxy.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Memory.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.ValueTuple.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Text.Encodings.Web.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Numerics.Vectors.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Threading.Tasks.Extensions.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\Microsoft.Bcl.AsyncInterfaces.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Buffers.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\nilam\EgramPanchayatV2\EGram - Project\obj\Debug\EGram.csproj.AssemblyReference.cache
-D:\nilam\EgramPanchayatV2\EGram - Project\obj\Debug\EGram.csproj.CoreCompileInputs.cache
-D:\nilam\EgramPanchayatV2\EGram - Project\obj\Debug\EGram.csproj.CopyComplete
-D:\nilam\EgramPanchayatV2\EGram - Project\obj\Debug\EGram.dll
-D:\nilam\EgramPanchayatV2\EGram - Project\obj\Debug\EGram.pdb
-D:\EGram - Project\obj\Debug\EGram.csprojAssemblyReference.cache
-D:\EGram - Project\obj\Debug\EGram.csproj.CoreCompileInputs.cache
-D:\EGram - Project\obj\Debug\EGram.dll
-D:\EGram - Project\obj\Debug\EGram.pdb
-D:\EGram - Project\bin\EGram.dll.config
-D:\EGram - Project\bin\EGram.dll
-D:\EGram - Project\bin\EGram.pdb
-D:\EGram - Project\bin\roslyn\csc.exe
-D:\EGram - Project\bin\roslyn\csc.exe.config
-D:\EGram - Project\bin\roslyn\csc.rsp
-D:\EGram - Project\bin\roslyn\csi.exe
-D:\EGram - Project\bin\roslyn\csi.exe.config
-D:\EGram - Project\bin\roslyn\csi.rsp
-D:\EGram - Project\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\EGram - Project\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\EGram - Project\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\EGram - Project\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\EGram - Project\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\EGram - Project\bin\roslyn\Microsoft.Managed.Core.targets
-D:\EGram - Project\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\EGram - Project\bin\roslyn\Microsoft.Win32.Primitives.dll
-D:\EGram - Project\bin\roslyn\System.AppContext.dll
-D:\EGram - Project\bin\roslyn\System.Collections.Immutable.dll
-D:\EGram - Project\bin\roslyn\System.Console.dll
-D:\EGram - Project\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-D:\EGram - Project\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\EGram - Project\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\EGram - Project\bin\roslyn\System.Globalization.Calendars.dll
-D:\EGram - Project\bin\roslyn\System.IO.Compression.dll
-D:\EGram - Project\bin\roslyn\System.IO.Compression.ZipFile.dll
-D:\EGram - Project\bin\roslyn\System.IO.FileSystem.dll
-D:\EGram - Project\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\EGram - Project\bin\roslyn\System.Net.Http.dll
-D:\EGram - Project\bin\roslyn\System.Net.Sockets.dll
-D:\EGram - Project\bin\roslyn\System.Reflection.Metadata.dll
-D:\EGram - Project\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-D:\EGram - Project\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\EGram - Project\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\EGram - Project\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\EGram - Project\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\EGram - Project\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\EGram - Project\bin\roslyn\System.Threading.Tasks.Extensions.dll
-D:\EGram - Project\bin\roslyn\System.ValueTuple.dll
-D:\EGram - Project\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\EGram - Project\bin\roslyn\System.Xml.XmlDocument.dll
-D:\EGram - Project\bin\roslyn\System.Xml.XPath.dll
-D:\EGram - Project\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\EGram - Project\bin\roslyn\vbc.exe
-D:\EGram - Project\bin\roslyn\vbc.exe.config
-D:\EGram - Project\bin\roslyn\vbc.rsp
-D:\EGram - Project\bin\roslyn\VBCSCompiler.exe
-D:\EGram - Project\bin\roslyn\VBCSCompiler.exe.config
-D:\EGram - Project\bin\Antlr3.Runtime.dll
-D:\EGram - Project\bin\EntityFramework.dll
-D:\EGram - Project\bin\EntityFramework.SqlServer.dll
-D:\EGram - Project\bin\Microsoft.AspNet.Identity.Core.dll
-D:\EGram - Project\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\EGram - Project\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\EGram - Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\EGram - Project\bin\Microsoft.Owin.dll
-D:\EGram - Project\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.Cookies.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.Facebook.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.Google.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.OAuth.dll
-D:\EGram - Project\bin\Microsoft.Owin.Security.Twitter.dll
-D:\EGram - Project\bin\Microsoft.Web.Infrastructure.dll
-D:\EGram - Project\bin\Newtonsoft.Json.dll
-D:\EGram - Project\bin\Owin.dll
-D:\EGram - Project\bin\System.Web.Helpers.dll
-D:\EGram - Project\bin\System.Web.Mvc.dll
-D:\EGram - Project\bin\System.Web.Optimization.dll
-D:\EGram - Project\bin\System.Web.Razor.dll
-D:\EGram - Project\bin\System.Web.WebPages.Deployment.dll
-D:\EGram - Project\bin\System.Web.WebPages.dll
-D:\EGram - Project\bin\System.Web.WebPages.Razor.dll
-D:\EGram - Project\bin\WebGrease.dll
-D:\EGram - Project\bin\System.Text.Json.dll
-D:\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
-D:\EGram - Project\bin\Microsoft.Crm.Sdk.Proxy.dll
-D:\EGram - Project\bin\Microsoft.Rest.ClientRuntime.dll
-D:\EGram - Project\bin\System.Memory.dll
-D:\EGram - Project\bin\System.ValueTuple.dll
-D:\EGram - Project\bin\System.Text.Encodings.Web.dll
-D:\EGram - Project\bin\System.Numerics.Vectors.dll
-D:\EGram - Project\bin\System.Threading.Tasks.Extensions.dll
-D:\EGram - Project\bin\Microsoft.Bcl.AsyncInterfaces.dll
-D:\EGram - Project\bin\System.Buffers.dll
-D:\EGram - Project\bin\System.Runtime.CompilerServices.Unsafe.dll
-D:\EGram - Project\bin\Microsoft.Xrm.Sdk.xml
-D:\EGram - Project\bin\Microsoft.Xrm.Sdk.Deployment.xml
-D:\EGram - Project\bin\Microsoft.Xrm.Tooling.Connector.xml
-D:\EGram - Project\bin\System.Web.Helpers.xml
-D:\EGram - Project\bin\System.Web.Mvc.xml
-D:\EGram - Project\bin\System.Web.Optimization.xml
-D:\EGram - Project\bin\System.Web.Razor.xml
-D:\EGram - Project\bin\System.Web.WebPages.xml
-D:\EGram - Project\bin\System.Web.WebPages.Deployment.xml
-D:\EGram - Project\bin\System.Web.WebPages.Razor.xml
-D:\EGram - Project\bin\Newtonsoft.Json.xml
-D:\EGram - Project\bin\Antlr3.Runtime.pdb
-D:\EGram - Project\bin\EntityFramework.xml
-D:\EGram - Project\bin\EntityFramework.SqlServer.xml
-D:\EGram - Project\bin\Microsoft.AspNet.Identity.Core.xml
-D:\EGram - Project\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\EGram - Project\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\EGram - Project\bin\Microsoft.Owin.xml
-D:\EGram - Project\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.Facebook.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.Cookies.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.Google.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.Twitter.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\EGram - Project\bin\Microsoft.Owin.Security.OAuth.xml
-D:\EGram - Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\EGram - Project\bin\System.Text.Json.xml
-D:\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
-D:\EGram - Project\bin\Microsoft.Crm.Sdk.Proxy.xml
-D:\EGram - Project\bin\System.Memory.xml
-D:\EGram - Project\bin\System.ValueTuple.xml
-D:\EGram - Project\bin\System.Text.Encodings.Web.xml
-D:\EGram - Project\bin\System.Numerics.Vectors.xml
-D:\EGram - Project\bin\System.Threading.Tasks.Extensions.xml
-D:\EGram - Project\bin\Microsoft.Bcl.AsyncInterfaces.xml
-D:\EGram - Project\bin\System.Buffers.xml
-D:\EGram - Project\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\EGram - Project\obj\Debug\EGram.csproj.CopyComplete
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.csproj.AssemblyReference.cache
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.csproj.CoreCompileInputs.cache
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\EGram.dll.config
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\EGram.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\EGram.pdb
@@ -465,6 +59,9 @@ C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.AspNet.Ide
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Security.Cookies.dll
@@ -474,7 +71,12 @@ C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Secur
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Rest.ClientRuntime.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Sdk.Deployment.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Sdk.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Tooling.Connector.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Newtonsoft.Json.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Owin.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.Helpers.dll
@@ -485,6 +87,13 @@ C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.WebPages.
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.WebPages.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.WebPages.Razor.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\WebGrease.dll
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Sdk.xml
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Sdk.Deployment.xml
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Sdk.Workflow.xml
+C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Xrm.Tooling.Connector.xml
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.Helpers.xml
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.Mvc.xml
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\System.Web.Optimization.xml
@@ -509,10 +118,6 @@ C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Secur
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.csproj.AssemblyReference.cache
-C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.csproj.CoreCompileInputs.cache
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.csproj.CopyComplete
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.dll
 C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\obj\Debug\EGram.pdb
-C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
-C:\Users\AMAR\OneDrive\Desktop\GIT Copy\EGram - Project\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml

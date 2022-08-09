@@ -1,0 +1,245 @@
+Session 14
+Append - On child entity like contact 
+Append To - On Parent entity like account
+
+Session 15
+sharing and acess Team
+-------------------------
+Sharing - not know which record is shared, not userfriendly
+
+Later version Access Team
+Doesn't own record
+
+In team template - There is option of access template
+entity not shown 
+Go To solution of entity ex.Account and then setting option is there.
+Go to form then we are switching old one due to lack of convience
+click on tab
+
+
+
+
+
+Field-Level Security
+-----------------------
+Hiding Encapsulation Masking
+FSP- Field security profile --Should not be seen by particular user
+go to solution-all-security-
+
+form level security
+------------------------------
+
+
+Heirarchy
+------------------------------------------------
+Power automata
+-----------------
+Cre8 Task When account is cr8
+------------
+Dataverse-
+        -Whwn row is added deleted
+        -Trigger-New record is added
+        -Add new row
+        -Action
+        -Create Task 
+
+
+
+-------------------------------------------------------
+Pluggin
+   https://docs.microsoft.com/en-us/power-apps/developer/data-platform/write-plug-in
+    
+  IPluginExecutionContext context = (IPluginExecutionContext)
+serviceProvider.GetService(typeof(IPluginExecutionContext));
+
+ // Obtain the organization service reference which you will need for
+// web service calls.
+IOrganizationServiceFactory serviceFactory =
+(IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+IOrganizationService svc = serviceFactory.CreateOrganizationService(context.UserId); 
+
+satishreddyv/DataverseExtensions (github.com)
+------------------------------Plugin Registration Tool------------------
+Debugging a plugin
+-----------------------
+
+1. Install the profiler solution in Plugin registration tool.(this is one-time activity)
+2. Go to Plugin step that you want to debug, right click and enable tracing.
+3. While enabling tracing, you have two options to handle tracing file
+a. Download tracing file
+b. Persist to a custom table (recommended by Microsoft)
+4. Go to CRM UI, do the step that causes the Plugin to fire. Then stop the profiler.
+5. Go to VS, keep the breakpoint.
+6. In the VS, Go to Debug option, select Attach to Process. Select process for Plugin registration tool.
+7. Go to Plugin Registration tool, click on the Plugin step and click Debug button.
+8. Supply the file if you downloaed file from Step 3(a) or select record if you have chosen 3(b).
+9. Supply dll file and click on "Start Execute" button.
+
+Update Plugin:
+-----------------
+Important points:
+
+=> Platform does not pass all the attributes in the entity object.
+=> Only change values are passed as attributes.
+=> You can use service.Retrive to pull unchanged attributes from database. OR Use PreEntityImage.
+
+Pre-Entity Image:
+=================
+=> To specify the required attributes needed for your Plugin logic.
+=> You can get existing values of the form which are not changed during that update
+
+
+Workflow Extensions (Microsoft Dataverse) - Power Apps | Microsoft Doc
+--------------------------------------------------------------------------------------------------------------
+[09:48] Satish Reddy
+    
+​[09:48] Satish Reddy
+    
+​[09:49] Satish Reddy
+    
+​[09:55] Satish Reddy
+    
+Early Binding:
+===============
+=> You can generate stongly typed classes (Wrapper classes) so that schema of tables known at compile time.
+
+XrmToolbox
+CrmSvcUtil.exe /url:https://org7ae2e893.api.crm.dynamics.com/XRMServices/2011/Organization.svc /out:GeneratedCode.cs /username:satish@audacitybikes.onmicrosoft.com /password:
+
+Client-side advanced customizations:
+======================================
+Web resource: JavaScript, HTML, CSS
+Client API or library:
+-----------------------
+https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/understand-clientapi-object-model
+Understand the Client API object model in model-driven apps - Power AppsThe Client API object model for model-driven apps provides you objects and methods that you can use to apply custom business logic in model-driven apps using JavaScript.docs.microsoft.com
+
+[09:55] Satish Reddy
+    
+Early Binding:
+===============
+=> You can generate stongly typed classes (Wrapper classes) so that schema of tables known at compile time.
+
+XrmToolbox
+CrmSvcUtil.exe /url:https://org7ae2e893.api.crm.dynamics.com/XRMServices/2011/Organization.svc /out:GeneratedCode.cs /username:satish@audacitybikes.onmicrosoft.com /password:
+
+Client-side advanced customizations:
+======================================
+Web resource: JavaScript, HTML, CSS
+Client API or library:
+-----------------------
+https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/understand-clientapi-object-model
+Understand the Client API object model in model-driven apps - Power AppsThe Client API object model for model-driven apps provides you objects and methods that you can use to apply custom business logic in model-driven apps using JavaScript.docs.microsoft.com​[09:56] Satish Reddy
+    https://docs.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/events-forms-grids?tabs=add-event-handlers-legacy
+Events in forms and grids in model-driven apps - Power AppsAll client-side code is initiated by events. In model-driven apps, you associate a specific function in a JavaScript library to be executed when an event occurs. This function is called an *event h...docs.microsoft.com
+=========================================================
+
+Custom workflow:
+
+=======================================================
+executionContext and formContext
+>Execution context is contain formcontex and formContex is a object that given so you can interact with js
+>To acess element on the form from js.
+
+Que)How you can get formvalues from js
+formContext.getAttribute("telephone1").getValue
+Que) SetValue
+formContext.getAttribute("telephone1").setvalue("809745578")
+Que) How can we debug js??
+We can go dev tool-Sources-Search File- Keep BreakPoint-Then do it.
+
+FormContext Object Model
+getControl- for entire control encluding lable either enabling or Disabling
+getAttribute-To set value and put value
+
+-------------
+Formcontex 
+Contin UI obj-Tab-Section-Again they gave control
+----------------------------------------------
+Notification
+Form Type
+Web Api
+
+--------------------
+Console App Area
+--------------------
+
+
+harichakradhar.mba@gmail.com
+
+Search capabilities:
+1. Quick find
+2. Advanced find
+3. Global search
+a. Revelance search (dataverse search)
+Why? Optionsets, lookups, AI, documents, images
+b. non-dataverse or categorized search (default)
+
+
+Localization:
+-------------
+Language:
+1. Admin has to enable languages before users start using them.
+2. Export/Import translations for custom entities/attributes/views etc.
+
+Document management & Sharepoint integration
+--------------------------------------------------
+
+business rule
+
+business rule is used to apply form logic without writing js or plugin
+----------------------
+lead to order flow
+---------------------
+
+
+AI builder
+******************
+Explore>Extract Invoice>Upload new 
+-----------------------------------------------
+
+CORE assemblyNULL GET PKG=-=====XRM.SDK
+Interface that used Iplugin
+Plugin pipeline
+They are placeholder where you can insert your plugins.
+
+Prevalidation:
+You want only checks      
+
+Preoperation:
+Before record inserted into DB we go for
+You want to do some logic
+
+Post opertion:
+When u want to work with record after it is created. so then
+
+26
+--------------------------------------------------------
+Sandbox isolation mode: 
+
+--------------------------------------------------------
+Web resouce 
+            Is a additional file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,50 +21,124 @@
             height: 100%;
         }
 
-  
+
     .avatar {
         vertical-align: middle;
         width: 180px;
         height: 180px;
         border-radius: 50%;
-        margin-left:20%
+        margin-left: 20%
     }
 </style>
 
-<div>
-    <!-- Carousel container -->
-    <div class="row images">
-        <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:900px;margin:auto;">
 
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#my-pics" data-slide-to="0" class="active"></li>
-                <li data-target="#my-pics" data-slide-to="1"></li>
-                <li data-target="#my-pics" data-slide-to="2"></li>
-            </ol>
 
-            <!-- Content -->
-            <div class="carousel-inner" role="listbox">
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
-                <!-- Slide 1 -->
-                <div class="item active photo">
-                    <img src="/ImagesInProj/Image1.png" alt="Sunset over beach">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Moderna Committe</span></h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</section><!-- End Hero -->
+
+<section class="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                <div class="icon-box icon-box-pink">
+                    <div class="icon"><img src="~/ImagesInProj/Image2.png" width="150%" height="100px" id="myImg" onclick="onclickofImage('myImg')" /></div>
+                    <h4 class="title" style="margin-top:15%"><a href="">Cordinator</a></h4>
+                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
                 </div>
-
-                <!-- Slide 2 -->
-                <div class="item photo">
-                    <img src="/ImagesInProj/Image2.png" alt="Rob Roy Glacier">
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="item photo">
-                    <img src="/ImagesInProj/Image2.png" alt="Longtail boats at Phi Phi">
-                </div>
-
             </div>
 
-            <!-- Previous/Next controls -->
-            <a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                <div class="icon-box icon-box-pink">
+                    <div class="icon"><img src="~/ImagesInProj/Image2.png" width="150%" height="100px" id="myImg" onclick="onclickofImage('myImg')" /></div>
+                    <h4 class="title" style="margin-top:15%"><a href="">Nagar Sevak</a></h4>
+                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
+
+
+<div id="myModal" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+</div>
+
+<!--<div>-->
+<!-- Carousel container -->
+<!--<div class="row images">
+    <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:900px;margin:auto;">-->
+<!-- Indicators -->
+<!--<ol class="carousel-indicators">
+    <li data-target="#my-pics" data-slide-to="0" class="active"></li>
+    <li data-target="#my-pics" data-slide-to="1"></li>
+    <li data-target="#my-pics" data-slide-to="2"></li>
+</ol>-->
+<!-- Content -->
+<!--<div class="carousel-inner" role="listbox">-->
+<!-- Slide 1 -->
+<!--<div class="item active photo">
+    <img src="/ImagesInProj/Image1.png" alt="Sunset over beach">
+</div>-->
+<!-- Slide 2 -->
+<!--<div class="item photo">
+    <img src="/ImagesInProj/Image2.png" alt="Rob Roy Glacier">
+</div>-->
+<!-- Slide 3 -->
+<!--<div class="item photo">
+        <img src="/ImagesInProj/Image2.png" alt="Longtail boats at Phi Phi">
+    </div>
+
+</div>-->
+<!-- Previous/Next controls -->
+<!--<a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
                 <span class="icon-prev" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
@@ -75,32 +149,37 @@
 
         </div>
     </div>
+</div>-->
+
+<div class="row" style="background-color:white">
+    <b><h1>Great resident of Panchayat.</h1></b>
+    <div class="col-md-4">
+        <h3>XYZ KYC</h3>
+        <p>
+            <img src="~/ImagesInProj/GreatResident/amarsapkal.jpg" alt="Avatar" class="avatar">
+            <br>
+            He is scholor in xyz. Graduated in KYC institute. Work for poor student education.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>XYZ KYC</h3>
+        <p>
+            <img src="~/ImagesInProj/Image2.png" alt="Avatar" class="avatar">
+            <br>
+            He is scholor in xyz. Graduated in KYC institute. Work for poor student education.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>XYZ KYC</h3>
+        <p>
+            <img src="~/ImagesInProj/GreatResident/Nilam.jpg" alt="Avatar" class="avatar">
+            <br>
+            He is scholor in xyz. Graduated in KYC institute. Work for poor student education.
+        </p>
+    </div>
 </div>
 
-    <div class="row" style="background-color:white">
-        <b><h1>Great resident of Panchayat.</h1></b>
-        <div class="col-md-4">
-            <h3>XYZ KYC</h3>
-            <p>
-                <img src="~/ImagesInProj/GreatResident/amarsapkal.jpg" alt="Avatar" class="avatar">
-                <br>
-                He is scholor in xyz. Graduated in KYC institute. Work for poor student education.
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h3>XYZ KYC</h3>
-            <p>
-                <img src="~/ImagesInProj/Image2.png" alt="Avatar" class="avatar">
-                <br>
-                He is scholor in xyz. Graduated in KYC institute. Work for poor student education.
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h3>XYZ KYC</h3>
-            <p>
-                <img src="~/ImagesInProj/GreatResident/Nilam.jpg" alt="Avatar" class="avatar">
-                <br>
-                He is scholor in xyz. Graduated in KYC institute. Work for poor student education.
-            </p>
-        </div>
-    </div>
+
+<script>
+    
+</script>

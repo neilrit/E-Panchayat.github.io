@@ -122,7 +122,7 @@ namespace E_GramProject.Views.Home
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
             }
             return Json(new { data = entities }, JsonRequestBehavior.AllowGet);
         }

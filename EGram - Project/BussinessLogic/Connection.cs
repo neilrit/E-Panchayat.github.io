@@ -8,10 +8,12 @@ namespace CRM.Gram.Services.Models
 {
     public class Connection
     {
-       
+        public static CrmServiceClient service;
         public static CrmServiceClient CRMService()
         {
-            CrmServiceClient service = null;
+            if(service!=null && service.IsReady)
+                return service;
+
             string constr = GetConnectionStringFromAppConfig("Connect");
             //You can specify connection information in cds/App.config to run this sample without the login dialog
             if (string.IsNullOrEmpty(constr))

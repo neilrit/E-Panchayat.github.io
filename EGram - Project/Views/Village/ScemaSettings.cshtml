@@ -84,28 +84,44 @@
         }
     </style>
 </head>
-<div class="w3-container" >
+<div class="w3-container container body-content" style="margin-top:2em">
 
-    <h2 style="margin-top:2em">
-        All Schems
-        <a href="@Url.Action("index","Village")" class="btn btn-success">Add New Schema</a>
-    </h2>
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>
+                    <b>Active schema</b>
+                    <a href="@Url.Action("index","Village")" class="btn btn-success">Add New Schema</a>
+                </h2>
+                <ol>
+                    <li><a href="index">Home</a></li>
+                    <li>Schema</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+
+   
 
     <div class="tab">
         @foreach (var obj in Model)
         {
-            <button class="tablinks" onclick="openCity(event, @obj.SchemeID)" id="defaultOpen_@obj.SchemeID">@obj.SchemaName
-                <a href="updateschema?id=@obj.SchemeID" style="float:right">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-            </button>
+            <button class="tablinks" onclick="openCity(event, @obj.SchemeID)" id="defaultOpen_@obj.SchemeID">
+                @obj.SchemaName
+            <a href="updateschema?id=@obj.SchemeID" style="float:right">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+        </button>
 
-        }
+    }
 
     </div>
     @foreach (var obj in Model)
     {
-        <div id="@obj.SchemeID" class="tabcontent" style="height: auto; font-size: 13px; background-color: white" >
+        <div id="@obj.SchemeID" class="tabcontent" style="height: auto; font-size: 13px; background-color: white">
 
             <div class="w3-card-4" style="width: 30em; display: inline; ">
                 <header class="w3-container w3-blue">
@@ -125,40 +141,40 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <b onclick="downloadschematemplate(@obj.SchemeID)">Download Application form</b>
                     </p>
-                    </div>
+                </div>
             </div>
         </div>
     }
 
     @*@foreach (var obj in Model)
-    {
-        <div class="col-md-6">
-            <div class="w3-card-4" style="width: 30em; display: inline; ">
-                <header class="w3-container w3-blue">
-                    <h1>
-                        @obj.SchemeID
-                        @obj.SchemaName
-                    </h1>
-                </header>
-                <div class="w3-container">
-                    <p>
+        {
+            <div class="col-md-6">
+                <div class="w3-card-4" style="width: 30em; display: inline; ">
+                    <header class="w3-container w3-blue">
+                        <h1>
+                            @obj.SchemeID
+                            @obj.SchemaName
+                        </h1>
+                    </header>
+                    <div class="w3-container">
+                        <p>
 
 
-                        @if (obj.Description.Length > 100)
-                        {
-                            @obj.Description.Substring(0, 100)
-                        }
-                        else
-                        {
-                            @obj.Description
-                        }
-                        ...
-                    </p>
-                    <a href="#" id="MybtnModal" onclick="GetAllScemadata(@obj.SchemeID)">View Details</a>
+                            @if (obj.Description.Length > 100)
+                            {
+                                @obj.Description.Substring(0, 100)
+                            }
+                            else
+                            {
+                                @obj.Description
+                            }
+                            ...
+                        </p>
+                        <a href="#" id="MybtnModal" onclick="GetAllScemadata(@obj.SchemeID)">View Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }*@
+        }*@
 
 
 </div>
